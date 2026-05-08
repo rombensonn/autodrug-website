@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
+    "build:static": "node scripts/build-static-preview.mjs",
     "start": "next start",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",

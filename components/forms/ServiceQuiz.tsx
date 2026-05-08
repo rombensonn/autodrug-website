@@ -25,6 +25,13 @@ export function ServiceQuiz() {
 
   async function submit() {
     setError("");
+    if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true") {
+      setError(
+        "Это статическая версия сайта на GitHub Pages. Форма не отправляет персональные данные. Для записи используйте телефон или WhatsApp."
+      );
+      return;
+    }
+
     if (!phone || problem.trim().length < 5 || !consentAccepted) {
       setError("Укажите телефон, опишите проблему и подтвердите согласие.");
       return;

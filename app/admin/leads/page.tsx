@@ -4,8 +4,6 @@ import { LeadsTable } from "@/components/admin/LeadsTable";
 import type { AdminLead } from "@/components/admin/LeadDetails";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
-import { prisma } from "@/lib/db";
-import { getAdminSession } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "Заявки - Авто друг",
@@ -13,6 +11,22 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminLeadsPage() {
+  if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true") {
+    return (
+      <Section>
+        <div className="mx-auto max-w-xl rounded-lg border border-slate-200 bg-white p-6 shadow-soft">
+          <h1 className="text-3xl font-black text-slate-950">Заявки недоступны</h1>
+          <p className="mt-3 leading-7 text-slate-700">
+            GitHub Pages показывает только статические страницы. Реальные заявки,
+            статусы и удаление доступны после деплоя на VPS с базой данных в РФ.
+          </p>
+        </div>
+      </Section>
+    );
+  }
+
+  const { getAdminSession } = await import("@/lib/auth");
+  const { prisma } = await import("@/lib/db");
   const session = await getAdminSession();
   if (!session) redirect("/admin/login");
 

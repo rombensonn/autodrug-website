@@ -52,6 +52,13 @@ export function LeadForm({
 
   async function onSubmit(values: FormValues) {
     setServerError("");
+    if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true") {
+      setServerError(
+        "Это статическая версия сайта на GitHub Pages. Онлайн-заявки работают только на VPS-версии с базой данных в РФ. Для связи позвоните или напишите в WhatsApp."
+      );
+      return;
+    }
+
     const response = await fetch("/api/lead", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -83,6 +90,12 @@ export function LeadForm({
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-slate-950">{title}</h2>
         <p className="mt-2 text-sm leading-6 text-slate-600">{subtitle}</p>
+        {process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true" ? (
+          <p className="mt-3 rounded-md bg-orange-50 p-3 text-sm leading-6 text-orange-900">
+            Статическая версия для просмотра на GitHub Pages: форма не отправляет
+            персональные данные. Для записи используйте телефон или WhatsApp.
+          </p>
+        ) : null}
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">

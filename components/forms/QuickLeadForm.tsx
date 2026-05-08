@@ -54,6 +54,13 @@ export function QuickLeadForm({ service }: { service?: string }) {
 
   async function onSubmit(values: QuickValues) {
     setServerError("");
+    if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true") {
+      setServerError(
+        "Это статическая версия сайта на GitHub Pages. Форма не отправляет персональные данные. Позвоните или напишите в WhatsApp."
+      );
+      return;
+    }
+
     const response = await fetch("/api/lead", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -86,6 +93,11 @@ export function QuickLeadForm({ service }: { service?: string }) {
         Оставьте телефон и пару слов о проблеме. Не передаем данные в WhatsApp или
         зарубежные сервисы.
       </p>
+      {process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true" ? (
+        <p className="mt-3 rounded-md bg-orange-50 p-3 text-sm leading-6 text-orange-900">
+          Статическая версия на GitHub Pages: форма не отправляет персональные данные.
+        </p>
+      ) : null}
 
       <label className="mt-5 block">
         <span className="mb-2 block text-sm font-semibold text-slate-800">Телефон *</span>

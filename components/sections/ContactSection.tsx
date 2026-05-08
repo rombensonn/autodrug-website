@@ -13,6 +13,8 @@ export function ContactSection({ withFormSlot }: { withFormSlot?: React.ReactNod
 
   function handleShowMap() {
     setShowMap(true);
+    if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true") return;
+
     void fetch("/api/analytics", {
       method: "POST",
       headers: { "content-type": "application/json" },
