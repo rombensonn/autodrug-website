@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id              Int        @id @default(autoincrement())
+  name            String?
+  phone           String
+  carBrand        String?
+  carModel        String?
+  carYear         String?
+  service         String?
+  problem         String
+  preferredDate   String?
+  preferredTime   String?
+  contactMethod   String?
+  needsPartsHelp  Boolean    @default(false)
+  sourcePage      String?
+  status          LeadStatus @default(new)
+  consentAccepted Boolean    @default(false)
+  consentVersion  String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+enum LeadStatus {
+  new
+  contacted
+  done
+  archived
+}
+
+model AnalyticsEvent {
+  id        Int      @id @default(autoincrement())
+  event     String
+  page      String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+}
+
+model RateLimitEvent {
+  id        Int      @id @default(autoincrement())
+  hashedIp  String
+  action    String
+  createdAt DateTime @default(now())
+
+  @@index([hashedIp, action, createdAt])
+}

@@ -1,0 +1,13 @@
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  output: "standalone",
+  poweredByHeader: false,
+  reactStrictMode: true,
+  trailingSlash: false,
+  images: {
+    formats: ["image/avif", "image/webp"]
+  }
+};
+
+export default nextConfig;

@@ -1,0 +1,9 @@
+node_modules
+.next
+.env
+.env*.local
+backups
+deploy/logs
+deploy/certs
+*.log
+tsconfig.tsbuildinfo

@@ -1,0 +1,18 @@
+services:
+  app:
+    extends:
+      file: ../docker-compose.yml
+      service: app
+
+  postgres:
+    extends:
+      file: ../docker-compose.yml
+      service: postgres
+
+  nginx:
+    extends:
+      file: ../docker-compose.yml
+      service: nginx
+
+volumes:
+  postgres_data:
