@@ -733,6 +733,21 @@ export const serviceCategories: ServiceCategory[] = [
 
 export const featuredServiceSlugs = serviceCategories.map((service) => service.slug);
 
+export type LeadServiceOption = {
+  label: string;
+  value: string;
+};
+
+const leadServiceExcludedSlugs = new Set(["konditsioner", "remont-stekol", "tonirovka"]);
+
+export const leadServiceOptions: LeadServiceOption[] = [
+  ...serviceCategories
+    .filter((service) => !leadServiceExcludedSlugs.has(service.slug))
+    .map((service) => ({ label: service.title, value: service.title })),
+  { label: "Промывка системы охлаждения", value: "Промывка системы охлаждения" },
+  { label: "Чистка форсунок стендовая", value: "Чистка форсунок стендовая" }
+];
+
 export function getServiceBySlug(slug: string) {
   return serviceCategories.find((service) => service.slug === slug);
 }
