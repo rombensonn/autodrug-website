@@ -17,14 +17,16 @@ import { Footer } from "@/components/layout/Footer";
 import { MobileBottomBar } from "@/components/layout/MobileBottomBar";
 import { PageViewTracker } from "@/components/layout/PageViewTracker";
 import { YandexMetrica } from "@/components/layout/YandexMetrica";
+import { business } from "@/data/business";
 import { defaultSeo } from "@/data/seo";
+import { publicAsset } from "@/lib/utils";
 
 export const metadata: Metadata = {
   ...defaultSeo,
   applicationName: "Авто друг",
   icons: {
-    icon: "/images/logo.png",
-    apple: "/images/logo.png"
+    icon: publicAsset(business.logo),
+    apple: publicAsset(business.logo)
   }
 };
 

@@ -4,6 +4,7 @@ import { business } from "@/data/business";
 import { footerNavigation } from "@/data/navigation";
 import { serviceCategories } from "@/data/services";
 import { TrackedLink } from "@/components/ui/tracked-link";
+import { publicAsset } from "@/lib/utils";
 
 export function Footer() {
   return (
@@ -17,7 +18,7 @@ export function Footer() {
                 className="object-contain"
                 fill
                 sizes="56px"
-                src={business.logo}
+                src={publicAsset(business.logo)}
                 unoptimized
               />
             </span>

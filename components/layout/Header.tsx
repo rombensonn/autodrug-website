@@ -8,6 +8,7 @@ import { business } from "@/data/business";
 import { mainNavigation } from "@/data/navigation";
 import { Button } from "@/components/ui/button";
 import { TrackedLink } from "@/components/ui/tracked-link";
+import { publicAsset } from "@/lib/utils";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -23,7 +24,7 @@ export function Header() {
               fill
               priority
               sizes="48px"
-              src={business.logo}
+              src={publicAsset(business.logo)}
               unoptimized
             />
           </span>

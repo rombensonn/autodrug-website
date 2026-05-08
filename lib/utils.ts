@@ -10,6 +10,19 @@ export function absoluteUrl(path = "/") {
   return `${base.replace(/\/$/, "")}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+export function publicAsset(path: string) {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+
+  if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true") {
+    const repositoryName =
+      process.env.NEXT_PUBLIC_GITHUB_PAGES_REPOSITORY || "autodrug-website";
+
+    return `/${repositoryName}${normalized}`;
+  }
+
+  return normalized;
+}
+
 export function formatDateTime(value: Date | string) {
   return new Intl.DateTimeFormat("ru-RU", {
     dateStyle: "medium",
