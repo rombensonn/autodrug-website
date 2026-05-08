@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { AlertTriangle, BatteryWarning, CheckCircle2, Droplets, Fan, Gauge, ShieldAlert, Wrench } from "lucide-react";
+import { AlertTriangle, BatteryWarning, CheckCircle2, Droplets, Gauge, ShieldAlert, Wrench } from "lucide-react";
 import { Hero } from "@/components/sections/Hero";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { PricePreview } from "@/components/sections/PricePreview";
@@ -21,7 +21,7 @@ import { faqJsonLd, localBusinessJsonLd } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Автосервис и шиномонтаж в Балашихе - Авто друг",
   description:
-    "Автосервис «Авто друг» в Балашихе: диагностика, ремонт двигателя, подвески, тормозов, кондиционера и шиномонтаж R10-R24. Работаем ежедневно до 22:00."
+    "Автосервис «Авто друг» в Балашихе: диагностика, ремонт двигателя, подвески, тормозов, системы охлаждения и шиномонтаж R10-R24. Работаем ежедневно до 22:00."
 });
 
 const reasons = [
@@ -30,7 +30,7 @@ const reasons = [
   { icon: Droplets, title: "пора менять масло" },
   { icon: ShieldAlert, title: "плохо тормозит" },
   { icon: Gauge, title: "нужна сезонная переобувка" },
-  { icon: Fan, title: "не работает кондиционер" },
+  { icon: AlertTriangle, title: "двигатель перегревается" },
   { icon: AlertTriangle, title: "появился шум в подвеске" },
   { icon: CheckCircle2, title: "нужна срочная диагностика" }
 ];

@@ -11,7 +11,7 @@ const filterLabels = [
   { slug: "tormoza", title: "Тормоза" },
   { slug: "podveska", title: "Подвеска" },
   { slug: "diagnostika", title: "Диагностика" },
-  { slug: "konditsioner", title: "Кондиционер" },
+  { slug: "ohlazhdenie", title: "Охлаждение" },
   { slug: "transmissiya", title: "Трансмиссия" },
   { slug: "prochie", title: "Прочее" }
 ];
