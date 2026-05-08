@@ -7,7 +7,18 @@ export function localBusinessJsonLd() {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
     name: business.name,
+    legalName: business.legal.operatorName,
+    taxID: business.legal.inn,
+    logo: absoluteUrl(business.logo),
+    identifier: [
+      {
+        "@type": "PropertyValue",
+        propertyID: "ОГРНИП",
+        value: business.legal.ogrnip
+      }
+    ],
     image: [
+      absoluteUrl(business.logo),
       absoluteUrl("/images/hero-auto-service.jpg"),
       absoluteUrl("/images/tire-service.jpg"),
       absoluteUrl("/images/engine-repair.jpg")
@@ -68,6 +79,8 @@ export function serviceJsonLd(service: ServiceCategory) {
     provider: {
       "@type": "AutoRepair",
       name: business.name,
+      legalName: business.legal.operatorName,
+      taxID: business.legal.inn,
       telephone: business.phoneDisplay,
       address: {
         "@type": "PostalAddress",

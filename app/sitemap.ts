@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/otzyvy",
     "/kontakty",
     "/privacy",
+    "/personal-data-consent",
     "/thanks"
   ];
 

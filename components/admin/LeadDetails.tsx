@@ -17,6 +17,7 @@ export type AdminLead = {
   sourcePage: string | null;
   status: string;
   consentAccepted: boolean;
+  privacyAccepted: boolean;
   consentVersion: string | null;
   createdAt: string;
   updatedAt: string;
@@ -41,6 +42,7 @@ export function LeadDetails({ lead }: { lead: AdminLead | null }) {
     ["Помощь с запчастями", lead.needsPartsHelp ? "да" : "нет"],
     ["Источник", lead.sourcePage || "не указан"],
     ["Согласие", lead.consentAccepted ? `да, версия ${lead.consentVersion || "не указана"}` : "нет"],
+    ["Политика конфиденциальности", lead.privacyAccepted ? "ознакомлен" : "нет"],
     ["Создана", formatDateTime(lead.createdAt)],
     ["Обновлена", formatDateTime(lead.updatedAt)]
   ];

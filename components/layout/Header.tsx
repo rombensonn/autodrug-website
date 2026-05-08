@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, Phone, X } from "lucide-react";
 import { useState } from "react";
 import { business } from "@/data/business";
@@ -15,8 +16,16 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 shadow-[0_1px_0_rgba(15,23,42,0.03)] backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link aria-label="Авто друг, главная" className="flex items-center gap-3" href="/">
-          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-950 text-lg font-black text-white">
-            АД
+          <span className="relative h-12 w-12 overflow-hidden rounded-full border border-slate-200 bg-white shadow-soft">
+            <Image
+              alt="Логотип автосервиса Авто друг"
+              className="object-contain"
+              fill
+              priority
+              sizes="48px"
+              src={business.logo}
+              unoptimized
+            />
           </span>
           <span className="leading-tight">
             <span className="block text-lg font-black text-slate-950">Авто друг</span>

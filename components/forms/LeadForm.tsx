@@ -9,6 +9,7 @@ import { Send } from "lucide-react";
 import { serviceCategories } from "@/data/services";
 import { business } from "@/data/business";
 import { leadInputSchema, type LeadFormInput } from "@/lib/leadSchema";
+import { sanitizePhoneInput } from "@/lib/phone";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -44,11 +45,13 @@ export function LeadForm({
       contactMethod: "phone",
       needsPartsHelp: false,
       consentAccepted: false,
+      privacyAccepted: false,
       sourcePage: pathname,
       consentVersion: business.consentVersion,
       startedAt
     }
   });
+  const phoneField = register("phone");
 
   async function onSubmit(values: FormValues) {
     setServerError("");
@@ -103,7 +106,17 @@ export function LeadForm({
           <Input autoComplete="name" {...register("name")} />
         </Field>
         <Field label="Телефон *" error={errors.phone?.message}>
-          <Input autoComplete="tel" inputMode="tel" type="tel" {...register("phone")} />
+          <Input
+            autoComplete="tel"
+            inputMode="tel"
+            pattern="[0-9+()\\-\\s]*"
+            type="tel"
+            {...phoneField}
+            onChange={(event) => {
+              event.currentTarget.value = sanitizePhoneInput(event.currentTarget.value);
+              void phoneField.onChange(event);
+            }}
+          />
         </Field>
         <Field label="Марка автомобиля" error={errors.carBrand?.message}>
           <Input autoComplete="off" {...register("carBrand")} />
@@ -160,15 +173,30 @@ export function LeadForm({
       <label className="mt-5 flex items-start gap-3 text-sm leading-6 text-slate-700">
         <Checkbox {...register("consentAccepted")} />
         <span>
-          Согласен на обработку персональных данных в соответствии с{" "}
-          <Link className="font-semibold text-primary underline" href="/privacy">
-            политикой конфиденциальности
+          Согласен на обработку персональных данных.{" "}
+          <Link className="font-semibold text-primary underline" href="/personal-data-consent">
+            Текст согласия
           </Link>
         </span>
       </label>
       {errors.consentAccepted?.message ? (
         <p className="mt-2 text-sm text-red-600" role="alert">
           {errors.consentAccepted.message}
+        </p>
+      ) : null}
+
+      <label className="mt-3 flex items-start gap-3 text-sm leading-6 text-slate-700">
+        <Checkbox {...register("privacyAccepted")} />
+        <span>
+          Ознакомлен с{" "}
+          <Link className="font-semibold text-primary underline" href="/privacy">
+            политикой конфиденциальности
+          </Link>
+        </span>
+      </label>
+      {errors.privacyAccepted?.message ? (
+        <p className="mt-2 text-sm text-red-600" role="alert">
+          {errors.privacyAccepted.message}
         </p>
       ) : null}
 

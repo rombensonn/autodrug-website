@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight } from "lucide-react";
 import { z } from "zod";
 import { business } from "@/data/business";
+import { countPhoneDigits, sanitizePhoneInput } from "@/lib/phone";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -17,12 +18,20 @@ type QuickValues = {
   phone: string;
   problem: string;
   consentAccepted: boolean;
+  privacyAccepted: boolean;
   company?: string;
   startedAt?: number;
 };
 
 const quickLeadSchema = z.object({
-  phone: z.string().trim().min(7, "Укажите телефон").max(30, "Телефон слишком длинный"),
+  phone: z
+    .string()
+    .trim()
+    .min(7, "Укажите телефон")
+    .max(30, "Телефон слишком длинный")
+    .refine((value) => /^[\d\s()+-]+$/.test(value) && countPhoneDigits(value) >= 10, {
+      message: "Введите корректный номер телефона"
+    }),
   problem: z
     .string()
     .trim()
@@ -30,6 +39,9 @@ const quickLeadSchema = z.object({
     .max(2000, "Описание слишком длинное"),
   consentAccepted: z.boolean().refine((value) => value, {
     message: "Нужно согласие на обработку персональных данных"
+  }),
+  privacyAccepted: z.boolean().refine((value) => value, {
+    message: "Нужно подтвердить ознакомление с политикой конфиденциальности"
   }),
   company: z.string().max(0).optional().or(z.literal("")),
   startedAt: z.number().optional()
@@ -48,9 +60,11 @@ export function QuickLeadForm({ service }: { service?: string }) {
     resolver: zodResolver(quickLeadSchema),
     defaultValues: {
       consentAccepted: false,
+      privacyAccepted: false,
       startedAt
     }
   });
+  const phoneField = register("phone");
 
   async function onSubmit(values: QuickValues) {
     setServerError("");
@@ -101,7 +115,17 @@ export function QuickLeadForm({ service }: { service?: string }) {
 
       <label className="mt-5 block">
         <span className="mb-2 block text-sm font-semibold text-slate-800">Телефон *</span>
-        <Input autoComplete="tel" inputMode="tel" type="tel" {...register("phone")} />
+        <Input
+          autoComplete="tel"
+          inputMode="tel"
+          pattern="[0-9+()\\-\\s]*"
+          type="tel"
+          {...phoneField}
+          onChange={(event) => {
+            event.currentTarget.value = sanitizePhoneInput(event.currentTarget.value);
+            void phoneField.onChange(event);
+          }}
+        />
         {errors.phone?.message ? (
           <span className="mt-1 block text-sm text-red-600">{errors.phone.message}</span>
         ) : null}
@@ -124,15 +148,28 @@ export function QuickLeadForm({ service }: { service?: string }) {
 
       <label className="mt-4 flex items-start gap-3 text-sm leading-6 text-slate-700">
         <Checkbox {...register("consentAccepted")} />
+          <span>
+            Согласен на обработку персональных данных.{" "}
+            <Link className="font-semibold text-primary underline" href="/personal-data-consent">
+              Текст согласия
+            </Link>
+          </span>
+      </label>
+      {errors.consentAccepted?.message ? (
+        <p className="mt-1 text-sm text-red-600">{errors.consentAccepted.message}</p>
+      ) : null}
+
+      <label className="mt-3 flex items-start gap-3 text-sm leading-6 text-slate-700">
+        <Checkbox {...register("privacyAccepted")} />
         <span>
-          Согласен на обработку персональных данных в соответствии с{" "}
+          Ознакомлен с{" "}
           <Link className="font-semibold text-primary underline" href="/privacy">
             политикой конфиденциальности
           </Link>
         </span>
       </label>
-      {errors.consentAccepted?.message ? (
-        <p className="mt-1 text-sm text-red-600">{errors.consentAccepted.message}</p>
+      {errors.privacyAccepted?.message ? (
+        <p className="mt-1 text-sm text-red-600">{errors.privacyAccepted.message}</p>
       ) : null}
 
       {serverError ? (

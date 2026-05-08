@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { CreditCard, MapPinned, MessageCircle, Phone } from "lucide-react";
 import { business } from "@/data/business";
 import { Button } from "@/components/ui/button";
@@ -8,20 +7,7 @@ import { Section, SectionHeading } from "@/components/ui/section";
 import { TrackedLink } from "@/components/ui/tracked-link";
 
 export function ContactSection({ withFormSlot }: { withFormSlot?: React.ReactNode }) {
-  const [showMap, setShowMap] = useState(false);
   const telegramUrl = process.env.NEXT_PUBLIC_TELEGRAM_URL;
-
-  function handleShowMap() {
-    setShowMap(true);
-    if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true") return;
-
-    void fetch("/api/analytics", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ event: "show_map_click", page: window.location.pathname }),
-      keepalive: true
-    });
-  }
 
   return (
     <Section id="contacts">
@@ -29,8 +15,8 @@ export function ContactSection({ withFormSlot }: { withFormSlot?: React.ReactNod
         <div>
           <SectionHeading
             eyebrow="Контакты"
-            title="Авто друг на Керамической улице"
-            description="Автосервис находится в Балашихе на Керамической улице, 2Б. Работаем ежедневно с 10:00 до 22:00."
+            title="Авто друг на Заводской улице"
+            description="Автосервис находится в Балашихе на Заводской улице, 7А. Работаем ежедневно с 10:00 до 22:00."
           />
           <div className="grid gap-4 rounded-lg border border-slate-200 bg-white p-6 shadow-soft">
             <p className="text-lg font-bold text-slate-950">{business.name}</p>
@@ -84,29 +70,27 @@ export function ContactSection({ withFormSlot }: { withFormSlot?: React.ReactNod
           </div>
         </div>
 
-        <div className="grid gap-6">
-          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-soft">
-            {showMap ? (
+        <div className="grid self-start gap-6">
+          <div className="self-start overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft">
+            <div className="flex items-center justify-between gap-4 border-b border-slate-200 p-4">
+              <div>
+                <h3 className="text-lg font-black text-slate-950">Карта проезда</h3>
+                <p className="mt-1 text-sm text-slate-600">
+                  {business.address}
+                </p>
+              </div>
+              <MapPinned aria-hidden className="h-7 w-7 shrink-0 text-primary" />
+            </div>
+            <div className="relative aspect-[16/10] min-h-80 max-h-[460px]">
               <iframe
-                className="h-80 w-full rounded-md border-0"
-                loading="lazy"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full border-0"
+                loading="eager"
                 referrerPolicy="no-referrer-when-downgrade"
                 src={business.mapEmbedUrl}
                 title="Карта проезда до Авто друг"
               />
-            ) : (
-              <div className="flex min-h-80 flex-col items-center justify-center rounded-md border border-dashed border-slate-300 bg-white p-6 text-center">
-                <MapPinned aria-hidden className="h-10 w-10 text-primary" />
-                <h3 className="mt-4 text-xl font-bold text-slate-950">Карта загружается только после клика</h3>
-                <p className="mt-2 max-w-md text-sm leading-6 text-slate-600">
-                  Так страница не отправляет запросы к картографическому сервису до
-                  вашего действия.
-                </p>
-                <Button className="mt-5" onClick={handleShowMap} type="button">
-                  Показать карту
-                </Button>
-              </div>
-            )}
+            </div>
           </div>
           {withFormSlot}
         </div>

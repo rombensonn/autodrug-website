@@ -1,0 +1,1 @@
+ALTER TABLE "Lead" ADD COLUMN "privacyAccepted" BOOLEAN NOT NULL DEFAULT false;

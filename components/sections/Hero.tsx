@@ -20,7 +20,7 @@ export function Hero() {
         <div className="min-w-0 max-w-[21.5rem] sm:max-w-none">
           <Badge>
             <MapPin aria-hidden className="mr-2 h-4 w-4" />
-            Балашиха, Керамическая ул., 2Б
+            Балашиха, Заводская ул., 7А
           </Badge>
           <h1 className="mt-6 max-w-full break-words text-[2rem] font-black leading-[1.14] tracking-normal text-slate-950 sm:max-w-4xl sm:text-5xl lg:text-6xl">
             Автосервис и шиномонтаж в Балашихе - ремонт без лишних навязанных
@@ -29,17 +29,17 @@ export function Hero() {
           <p className="mt-6 max-w-full text-base leading-7 text-slate-700 sm:max-w-2xl sm:text-lg sm:leading-8">
             Диагностика, ремонт двигателя, подвески, тормозов, трансмиссии,
             кондиционера и шиномонтаж R10-R24. Работаем ежедневно с 10:00 до
-            22:00 на Керамической улице, 2Б.
+            22:00 на Заводской улице, 7А.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg">
+          <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
+            <Button asChild className="w-full whitespace-nowrap sm:w-auto" size="lg">
               <Link href="#lead-form">
                 Записаться на ремонт
-                <ArrowRight aria-hidden className="h-5 w-5" />
+                <ArrowRight aria-hidden className="h-5 w-5 shrink-0" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
+            <Button asChild className="w-full whitespace-nowrap sm:w-auto" size="lg" variant="outline">
               <Link href="#prices">Рассчитать стоимость</Link>
             </Button>
           </div>
@@ -64,24 +64,26 @@ export function Hero() {
             </Button>
           </div>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {facts.map((fact) => {
-              const Icon = fact.icon;
-              return (
-                <div
-                  className="rounded-lg border border-slate-200 bg-white/85 p-4 shadow-soft"
-                  key={fact.label}
-                >
-                  <Icon aria-hidden className="h-5 w-5 text-primary" />
-                  <p className="mt-2 text-sm font-bold text-slate-900">{fact.label}</p>
-                </div>
-              );
-            })}
-          </div>
         </div>
 
         <div className="relative min-w-0 lg:self-start">
           <QuickLeadForm />
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {facts.map((fact) => {
+              const Icon = fact.icon;
+              return (
+                <div
+                  className="group rounded-lg border border-slate-200 bg-white/90 p-4 shadow-soft transition-[border-color,box-shadow,transform] duration-200 hover:border-primary/30 hover:shadow-lift motion-safe:hover:-translate-y-0.5"
+                  key={fact.label}
+                >
+                  <div className="flex h-9 w-9 items-center justify-center rounded-md bg-orange-50 text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-white">
+                    <Icon aria-hidden className="h-5 w-5" />
+                  </div>
+                  <p className="mt-3 text-sm font-bold text-slate-900">{fact.label}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

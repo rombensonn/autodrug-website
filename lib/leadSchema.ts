@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { business } from "@/data/business";
+import { countPhoneDigits } from "@/lib/phone";
 
 const optionalText = z.preprocess(
   (value) => (typeof value === "string" && value.trim() === "" ? undefined : value),
@@ -8,13 +9,18 @@ const optionalText = z.preprocess(
 
 export const contactMethodSchema = z.enum(["phone", "whatsapp", "telegram"]);
 
+const phoneSchema = z
+  .string()
+  .trim()
+  .min(7, "Укажите телефон")
+  .max(30, "Телефон слишком длинный")
+  .refine((value) => /^[\d\s()+-]+$/.test(value) && countPhoneDigits(value) >= 10, {
+    message: "Введите корректный номер телефона"
+  });
+
 export const leadInputSchema = z.object({
   name: optionalText,
-  phone: z
-    .string()
-    .trim()
-    .min(7, "Укажите телефон")
-    .max(30, "Телефон слишком длинный"),
+  phone: phoneSchema,
   carBrand: optionalText,
   carModel: optionalText,
   carYear: optionalText,
@@ -31,6 +37,9 @@ export const leadInputSchema = z.object({
   sourcePage: optionalText,
   consentAccepted: z.boolean().refine((value) => value, {
     message: "Нужно согласие на обработку персональных данных"
+  }),
+  privacyAccepted: z.boolean().refine((value) => value, {
+    message: "Нужно подтвердить ознакомление с политикой конфиденциальности"
   }),
   consentVersion: z.string().optional().default(business.consentVersion),
   company: z.string().max(0).optional().or(z.literal("")),

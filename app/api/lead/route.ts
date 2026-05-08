@@ -53,6 +53,7 @@ export async function POST(request: NextRequest) {
       needsPartsHelp: parsed.data.needsPartsHelp,
       sourcePage: parsed.data.sourcePage,
       consentAccepted: parsed.data.consentAccepted,
+      privacyAccepted: parsed.data.privacyAccepted,
       consentVersion: parsed.data.consentVersion
     }
   });

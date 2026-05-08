@@ -21,7 +21,11 @@ import { defaultSeo } from "@/data/seo";
 
 export const metadata: Metadata = {
   ...defaultSeo,
-  applicationName: "Авто друг"
+  applicationName: "Авто друг",
+  icons: {
+    icon: "/images/logo.png",
+    apple: "/images/logo.png"
+  }
 };
 
 export const viewport: Viewport = {

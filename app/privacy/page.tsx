@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Section } from "@/components/ui/section";
+import { business } from "@/data/business";
 import { buildMetadata } from "@/data/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -14,7 +15,12 @@ const sections = [
   {
     title: "Оператор",
     text:
-      "Оператор: [указать ИП/ООО владельца автосервиса]. ИНН: [указать ИНН]. E-mail для обращений по ПДн: [указать e-mail]. Адрес: Балашиха, Керамическая улица, 2Б."
+      `Оператор: ${business.legal.operatorName}. ИНН: ${business.legal.inn}. ОГРНИП: ${business.legal.ogrnip}. Дата регистрации: ${business.legal.registrationDate}. E-mail для обращений по ПДн: ${business.legal.personalDataEmail}. Адрес автосервиса: ${business.address}.`
+  },
+  {
+    title: "Сведения о деятельности",
+    text:
+      `Основной вид деятельности по ЕГРИП: ${business.legal.mainOkved}. Сведения взяты из выписки ЕГРИП от 08.05.2026.`
   },
   {
     title: "Цели обработки",
@@ -46,7 +52,7 @@ const sections = [
   {
     title: "Cookies и карты",
     text:
-      "Сайт использует технические cookies для работы админ-панели. Если включена Яндекс.Метрика, это указывается владельцем сайта отдельно. При нажатии кнопки «Показать карту» может загружаться сторонний картографический сервис."
+      "Сайт использует технические cookies для работы админ-панели. Если включена Яндекс.Метрика, это указывается владельцем сайта отдельно. В блоке контактов может загружаться карта Яндекса; при отображении карты браузер обращается к стороннему картографическому сервису."
   },
   {
     title: "Отзыв согласия",

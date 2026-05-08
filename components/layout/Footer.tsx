@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { business } from "@/data/business";
 import { footerNavigation } from "@/data/navigation";
 import { serviceCategories } from "@/data/services";
@@ -10,8 +11,15 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div>
           <Link className="flex items-center gap-3" href="/">
-            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-lg font-black text-white">
-              АД
+            <span className="relative h-14 w-14 overflow-hidden rounded-full border border-white/15 bg-white shadow-soft">
+              <Image
+                alt="Логотип автосервиса Авто друг"
+                className="object-contain"
+                fill
+                sizes="56px"
+                src={business.logo}
+                unoptimized
+              />
             </span>
             <span className="text-xl font-black">Авто друг</span>
           </Link>
@@ -23,6 +31,12 @@ export function Footer() {
             Информация о ценах носит ознакомительный характер. Точную стоимость
             уточняйте у мастера после диагностики.
           </p>
+          <div className="mt-5 grid gap-1 text-xs leading-5 text-slate-400">
+            <p>{business.legal.operatorName}</p>
+            <p>
+              ИНН {business.legal.inn}, ОГРНИП {business.legal.ogrnip}
+            </p>
+          </div>
         </div>
 
         <div>

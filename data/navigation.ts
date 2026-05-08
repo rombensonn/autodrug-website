@@ -7,5 +7,6 @@ export const mainNavigation = [
 
 export const footerNavigation = [
   ...mainNavigation,
-  { href: "/privacy", label: "Политика конфиденциальности" }
+  { href: "/privacy", label: "Политика конфиденциальности" },
+  { href: "/personal-data-consent", label: "Согласие на обработку ПДн" }
 ];

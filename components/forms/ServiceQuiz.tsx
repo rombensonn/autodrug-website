@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { business } from "@/data/business";
+import { sanitizePhoneInput } from "@/lib/phone";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -20,6 +21,7 @@ export function ServiceQuiz() {
   const [needsPartsHelp, setNeedsPartsHelp] = useState(false);
   const [phone, setPhone] = useState("");
   const [consentAccepted, setConsentAccepted] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -32,8 +34,8 @@ export function ServiceQuiz() {
       return;
     }
 
-    if (!phone || problem.trim().length < 5 || !consentAccepted) {
-      setError("Укажите телефон, опишите проблему и подтвердите согласие.");
+    if (!phone || problem.trim().length < 5 || !consentAccepted || !privacyAccepted) {
+      setError("Укажите телефон, опишите проблему и отметьте оба чекбокса.");
       return;
     }
 
@@ -50,6 +52,7 @@ export function ServiceQuiz() {
         contactMethod: "phone",
         sourcePage: pathname,
         consentAccepted,
+        privacyAccepted,
         consentVersion: business.consentVersion,
         startedAt
       })
@@ -67,7 +70,7 @@ export function ServiceQuiz() {
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-soft sm:p-6">
       <div className="mb-5">
-        <h2 className="text-2xl font-bold text-slate-950">Быстрый расчет</h2>
+        <h2 className="text-2xl font-bold text-slate-950">Ориентир по стоимости</h2>
         <p className="mt-2 text-sm leading-6 text-slate-600">
           Если не знаете точную причину, ответьте на несколько вопросов.
         </p>
@@ -97,7 +100,13 @@ export function ServiceQuiz() {
         </label>
         <label>
           <span className="mb-2 block text-sm font-semibold text-slate-800">Телефон *</span>
-          <Input inputMode="tel" type="tel" value={phone} onChange={(event) => setPhone(event.target.value)} />
+          <Input
+            inputMode="tel"
+            pattern="[0-9+()\\-\\s]*"
+            type="tel"
+            value={phone}
+            onChange={(event) => setPhone(sanitizePhoneInput(event.target.value))}
+          />
         </label>
       </div>
 
@@ -107,7 +116,20 @@ export function ServiceQuiz() {
           onChange={(event) => setConsentAccepted(event.target.checked)}
         />
         <span>
-          Согласен на обработку персональных данных в соответствии с{" "}
+          Согласен на обработку персональных данных.{" "}
+          <Link className="font-semibold text-primary underline" href="/personal-data-consent">
+            Текст согласия
+          </Link>
+        </span>
+      </label>
+
+      <label className="mt-3 flex items-start gap-3 text-sm leading-6 text-slate-700">
+        <Checkbox
+          checked={privacyAccepted}
+          onChange={(event) => setPrivacyAccepted(event.target.checked)}
+        />
+        <span>
+          Ознакомлен с{" "}
           <Link className="font-semibold text-primary underline" href="/privacy">
             политикой конфиденциальности
           </Link>

@@ -23,6 +23,7 @@ model Lead {
   sourcePage      String?
   status          LeadStatus @default(new)
   consentAccepted Boolean    @default(false)
+  privacyAccepted Boolean    @default(false)
   consentVersion  String?
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
