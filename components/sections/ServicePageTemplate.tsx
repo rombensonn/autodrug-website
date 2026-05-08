@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { business } from "@/data/business";
@@ -25,39 +24,27 @@ export function ServicePageTemplate({ service }: { service: ServiceCategory }) {
             { href: `/uslugi/${service.slug}`, label: service.title }
           ]}
         />
-        <div className="grid items-center gap-8 lg:grid-cols-[1fr_0.9fr]">
-          <div>
-            <Badge>{business.city}, {business.streetAddress}</Badge>
-            <h1 className="mt-5 max-w-4xl text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
-              {service.h1}
-            </h1>
-            <p className="mt-5 text-lg leading-8 text-slate-700">{service.longDescription}</p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <span className="rounded-md bg-slate-950 px-4 py-3 text-lg font-black text-white">
-                {service.priceFrom}
-              </span>
-              <Button asChild size="lg">
-                <Link href="#lead-form">
-                  Записаться
-                  <ArrowRight aria-hidden className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <TrackedLink event="phone_click" href={business.phoneHref}>
-                  Позвонить
-                </TrackedLink>
-              </Button>
-            </div>
-          </div>
-          <div className="overflow-hidden rounded-lg border border-slate-200 shadow-lift">
-            <Image
-              alt={`${service.title} в Балашихе - Авто друг`}
-              className="h-72 w-full object-cover sm:h-96"
-              height={720}
-              priority
-              src={service.image}
-              width={960}
-            />
+        <div className="max-w-4xl">
+          <Badge>{business.city}, {business.streetAddress}</Badge>
+          <h1 className="mt-5 text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
+            {service.h1}
+          </h1>
+          <p className="mt-5 text-lg leading-8 text-slate-700">{service.longDescription}</p>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <span className="rounded-md bg-slate-950 px-4 py-3 text-lg font-black text-white">
+              {service.priceFrom}
+            </span>
+            <Button asChild size="lg">
+              <Link href="#lead-form">
+                Записаться
+                <ArrowRight aria-hidden className="h-5 w-5" />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <TrackedLink event="phone_click" href={business.phoneHref}>
+                Позвонить
+              </TrackedLink>
+            </Button>
           </div>
         </div>
       </Section>

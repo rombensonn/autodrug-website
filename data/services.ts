@@ -71,28 +71,28 @@ export const priceGroups: PriceGroup[] = [
     items: [
       {
         name: "Снятие/установка колес",
-        price: "от 150 ₽ за 1 шт.",
+        price: "от 200 ₽ за 1 шт.",
         description:
           "Снятие и установка резины R10-R24, включая низкопрофильную и RUNFLAT.",
-        offerPrice: 150
+        offerPrice: 200
       },
       { name: "Балансировка R10-R24", price: "от 160 ₽", offerPrice: 160 },
       { name: "Замена и ремонт камер", price: "от 250 ₽", offerPrice: 250 },
       {
         name: "Ремонт бескамерных покрышек",
-        price: "от 500 ₽",
-        offerPrice: 500
+        price: "от 250 ₽",
+        offerPrice: 250
       },
       {
         name: "Сезонное хранение колес",
-        price: "от 3000 ₽",
+        price: "3000 ₽ за 6 мес. (сезон)",
         offerPrice: 3000
       },
       { name: "Правка дисков", price: "от 500 ₽", offerPrice: 500 },
       {
         name: "Дошиповка зимней шины",
-        price: "от 30 ₽ за 1 шт.",
-        offerPrice: 30
+        price: "от 25 ₽ за 1 шт.",
+        offerPrice: 25
       }
     ]
   },
@@ -103,20 +103,20 @@ export const priceGroups: PriceGroup[] = [
       { name: "Экспресс-замена масла", price: "от 1000 ₽", offerPrice: 1000 },
       {
         name: "Снятие/установка двигателя",
-        price: "от 25000 ₽",
-        offerPrice: 25000
+        price: "от 20000 ₽",
+        offerPrice: 20000
       },
       {
         name: "Капитальный ремонт двигателя",
-        price: "от 70000 ₽",
-        offerPrice: 70000
+        price: "от 50000 ₽",
+        offerPrice: 50000
       },
-      { name: "Замена цепи ГРМ", price: "от 15000 ₽", offerPrice: 15000 },
-      { name: "Замена ремня ГРМ", price: "от 7000 ₽", offerPrice: 7000 },
+      { name: "Замена цепи ГРМ", price: "от 12000 ₽", offerPrice: 12000 },
+      { name: "Замена ремня ГРМ", price: "от 8000 ₽", offerPrice: 8000 },
       {
         name: "Замена прокладок и сальников",
-        price: "от 7000 ₽",
-        offerPrice: 7000
+        price: "2000 ₽",
+        offerPrice: 2000
       },
       { name: "Замена поддона", price: "от 3000 ₽", offerPrice: 3000 },
       {
@@ -126,8 +126,8 @@ export const priceGroups: PriceGroup[] = [
       },
       {
         name: "Замена опор двигателя и КПП",
-        price: "от 1500 ₽",
-        offerPrice: 1500
+        price: "от 1000 ₽",
+        offerPrice: 1000
       },
       {
         name: "Установка защиты картера",
@@ -136,15 +136,15 @@ export const priceGroups: PriceGroup[] = [
       },
       {
         name: "Замена приводных ремней",
-        price: "от 2000 ₽",
-        offerPrice: 2000
-      },
-      {
-        name: "Чистка дроссельных заслонок и карбюраторов",
         price: "от 1500 ₽",
         offerPrice: 1500
       },
-      { name: "Замена свечей", price: "от 2000 ₽", offerPrice: 2000 },
+      {
+        name: "Чистка дроссельных заслонок и карбюраторов",
+        price: "от 2000 ₽",
+        offerPrice: 2000
+      },
+      { name: "Замена свечей", price: "от 1000 ₽", offerPrice: 1000 },
       { name: "Замена фильтров", price: "от 400 ₽", offerPrice: 400 }
     ]
   },
@@ -160,8 +160,8 @@ export const priceGroups: PriceGroup[] = [
       },
       {
         name: "Замена тормозной жидкости",
-        price: "от 800 ₽",
-        offerPrice: 800
+        price: "от 1000 ₽",
+        offerPrice: 1000
       },
       {
         name: "Замена тормозных шлангов",
@@ -170,8 +170,8 @@ export const priceGroups: PriceGroup[] = [
       },
       {
         name: "Замена тормозных дисков",
-        price: "от 2000 ₽",
-        offerPrice: 2000
+        price: "от 1500 ₽",
+        offerPrice: 1500
       },
       {
         name: "Замена тормозных барабанов",
@@ -185,8 +185,8 @@ export const priceGroups: PriceGroup[] = [
       },
       {
         name: "Замена тормозных трубок",
-        price: "от 3000 ₽",
-        offerPrice: 3000
+        price: "от 1500 ₽",
+        offerPrice: 1500
       },
       {
         name: "Ремонт и замена усилителей тормозов",
@@ -200,8 +200,8 @@ export const priceGroups: PriceGroup[] = [
       },
       {
         name: "Изготовление тормозных трубок",
-        price: "от 4000 ₽",
-        offerPrice: 4000
+        price: "от 2000 ₽",
+        offerPrice: 2000
       },
       {
         name: "Замена датчиков и блоков ABS",
@@ -219,20 +219,20 @@ export const priceGroups: PriceGroup[] = [
         price: "от 2500 ₽",
         offerPrice: 2500
       },
-      { name: "Замена пружин подвески", price: "от 2500 ₽", offerPrice: 2500 },
+      { name: "Замена пружин подвески", price: "от 1500 ₽", offerPrice: 1500 },
       { name: "Замена шаровых опор", price: "от 1500 ₽", offerPrice: 1500 },
       { name: "Замена рычагов подвески", price: "от 2500 ₽", offerPrice: 2500 },
       {
         name: "Замена и ремонт реактивных тяг",
-        price: "от 2500 ₽",
-        offerPrice: 2500
+        price: "от 1500 ₽",
+        offerPrice: 1500
       },
       { name: "Замена опорных подшипников", price: "от 2500 ₽", offerPrice: 2500 },
       { name: "Замена сайлентблоков", price: "от 1000 ₽", offerPrice: 1000 },
       {
         name: "Замена втулок и стоек стабилизатора",
-        price: "от 1000 ₽",
-        offerPrice: 1000
+        price: "от 500 ₽",
+        offerPrice: 500
       },
       {
         name: "Замена ступиц и ступичных подшипников",
@@ -254,11 +254,11 @@ export const priceGroups: PriceGroup[] = [
       { name: "Замена рулевых реек", price: "от 6000 ₽", offerPrice: 6000 },
       {
         name: "Замена пыльников рулевых реек",
-        price: "от 2000 ₽",
-        offerPrice: 2000
+        price: "от 1500 ₽",
+        offerPrice: 1500
       },
-      { name: "Замена рулевых тяг", price: "от 2000 ₽", offerPrice: 2000 },
-      { name: "Замена насосов ГУР", price: "от 3000 ₽", offerPrice: 3000 },
+      { name: "Замена рулевых тяг", price: "от 1500 ₽", offerPrice: 1500 },
+      { name: "Замена насосов ГУР", price: "от 2000 ₽", offerPrice: 2000 },
       {
         name: "Замена и ремонт рулевых редукторов и маятников",
         price: "от 3000 ₽",
@@ -266,8 +266,8 @@ export const priceGroups: PriceGroup[] = [
       },
       {
         name: "Замена шлангов и трубок ГУР",
-        price: "от 3000 ₽",
-        offerPrice: 3000
+        price: "от 2000 ₽",
+        offerPrice: 2000
       }
     ]
   },
@@ -282,46 +282,13 @@ export const priceGroups: PriceGroup[] = [
         offerPrice: 1000
       },
       { name: "Замер компрессии", price: "от 2000 ₽", offerPrice: 2000 },
-      { name: "Замер давления масла", price: "от 2000 ₽", offerPrice: 2000 },
+      { name: "Замер давления масла", price: "от 1000 ₽", offerPrice: 1000 },
       {
         name: "Замер давления в топливной системе",
-        price: "от 2000 ₽",
-        offerPrice: 2000
+        price: "от 1000 ₽",
+        offerPrice: 1000
       },
-      { name: "Компьютерная диагностика автомобиля", price: "цена уточняется" }
-    ]
-  },
-  {
-    slug: "konditsioner",
-    title: "Кондиционер и система охлаждения",
-    items: [
-      {
-        name: "Замена и ремонт компрессоров и узлов кондиционирования",
-        price: "от 3000 ₽",
-        offerPrice: 3000
-      },
-      {
-        name: "Промывка основного радиатора",
-        price: "от 2500 ₽",
-        offerPrice: 2500
-      },
-      { name: "Промывка радиатора печки", price: "от 3500 ₽", offerPrice: 3500 },
-      {
-        name: "Промывка системы охлаждения двигателя",
-        price: "от 4000 ₽",
-        offerPrice: 4000
-      },
-      {
-        name: "Заправка системы кондиционирования",
-        price: "от 5000 ₽",
-        offerPrice: 5000
-      },
-      { name: "Чистка радиаторов", price: "от 2500 ₽", offerPrice: 2500 },
-      {
-        name: "Диагностика системы кондиционирования",
-        price: "от 2500 ₽",
-        offerPrice: 2500
-      }
+      { name: "Компьютерная диагностика автомобиля", price: "1000 ₽", offerPrice: 1000 }
     ]
   },
   {
@@ -330,23 +297,13 @@ export const priceGroups: PriceGroup[] = [
     items: [
       {
         name: "Замена сальников, пыльников, прокладок",
-        price: "от 3000 ₽",
-        offerPrice: 3000
+        price: "от 1000 ₽",
+        offerPrice: 1000
       },
-      { name: "Замена крестовин", price: "от 2500 ₽", offerPrice: 2500 },
-      {
-        name: "Замена раздаточных коробок",
-        price: "от 10000 ₽",
-        offerPrice: 10000
-      },
+      { name: "Замена крестовин", price: "от 1500 ₽", offerPrice: 1500 },
       { name: "Замена сцепления", price: "от 10000 ₽", offerPrice: 10000 },
-      { name: "Ремонт привода сцепления", price: "цена уточняется" },
-      {
-        name: "Замена и ремонт карданных валов",
-        price: "от 2000 ₽",
-        offerPrice: 2000
-      },
-      { name: "Замена МКПП и АКПП", price: "от 15000 ₽", offerPrice: 15000 }
+      { name: "Ремонт привода сцепления", price: "от 1500 ₽", offerPrice: 1500 },
+      { name: "Замена МКПП и АКПП", price: "от 12000 ₽", offerPrice: 12000 }
     ]
   },
   {
@@ -357,16 +314,16 @@ export const priceGroups: PriceGroup[] = [
       { name: "Сварочные работы", price: "от 1000 ₽", offerPrice: 1000 },
       {
         name: "Замена кислородного датчика",
-        price: "от 1500 ₽",
-        offerPrice: 1500
+        price: "от 1000 ₽",
+        offerPrice: 1000
       },
       { name: "Замена катализатора", price: "от 3000 ₽", offerPrice: 3000 },
       {
         name: "Замена и установка гофры",
-        price: "от 3000 ₽",
-        offerPrice: 3000
+        price: "от 2000 ₽",
+        offerPrice: 2000
       },
-      { name: "Ремонт глушителей", price: "цена уточняется" }
+      { name: "Ремонт глушителей", price: "от 1000 ₽", offerPrice: 1000 }
     ]
   },
   {
@@ -375,18 +332,15 @@ export const priceGroups: PriceGroup[] = [
     items: [
       { name: "Ремонт карбюраторов", price: "от 2000 ₽", offerPrice: 2000 },
       {
-        name: "Пескоструй и защита от коррозии",
+        name: "Пескоструй",
         price: "от 1000 ₽",
+        description: "Стоимость зависит от объема и сложности детали.",
         offerPrice: 1000
       },
-      {
-        name: "Ремонт лобового стекла: трещины, сколы, полировка",
-        price: "от 3000 ₽",
-        offerPrice: 3000
-      },
-      { name: "Тонировка автомобиля", price: "от 3000 ₽", offerPrice: 3000 },
+      { name: "Промывка системы охлаждения", price: "от 3000 ₽", offerPrice: 3000 },
+      { name: "Чистка форсунок стендовая", price: "750 ₽ за 1 шт.", offerPrice: 750 },
+      { name: "Установка фаркопа", price: "от 3000 ₽", offerPrice: 3000 },
       { name: "Оклейка автомобиля", price: "от 3000 ₽", offerPrice: 3000 },
-      { name: "Установка фаркопа", price: "цена уточняется" },
       { name: "Сварочные работы", price: "от 1000 ₽", offerPrice: 1000 },
       { name: "Выездная диагностика автомобиля", price: "цена уточняется" },
       { name: "Установка парктроника", price: "цена уточняется" },
@@ -414,8 +368,8 @@ export const serviceCategories: ServiceCategory[] = [
     seoDescription:
       "Шиномонтаж R10-R24 в Балашихе: снятие и установка колес, балансировка, ремонт проколов, RUNFLAT, правка дисков и сезонное хранение.",
     h1: "Шиномонтаж в Балашихе для колес R10-R24",
-    priceFrom: "от 150 ₽",
-    offerPrice: 150,
+    priceFrom: "от 200 ₽",
+    offerPrice: 200,
     services: group("shinomontazh").items,
     symptoms: [
       "Нужна сезонная переобувка.",
@@ -433,7 +387,7 @@ export const serviceCategories: ServiceCategory[] = [
       },
       {
         question: "Есть ли сезонное хранение?",
-        answer: "Да, сезонное хранение колес начинается от 3000 ₽."
+        answer: "Да, сезонное хранение колес стоит 3000 ₽ за 6 мес. (сезон)."
       }
     ],
     relatedServices: ["diagnostika-avto", "remont-podveski", "remont-tormozov"],
@@ -450,8 +404,8 @@ export const serviceCategories: ServiceCategory[] = [
     seoDescription:
       "Ремонт двигателя в Балашихе: замена ГРМ, свечей, фильтров, опор, сальников, капитальный ремонт и диагностика. Цены от, запись по телефону.",
     h1: "Ремонт двигателя в Балашихе",
-    priceFrom: "от 1500 ₽",
-    offerPrice: 1500,
+    priceFrom: "от 400 ₽",
+    offerPrice: 400,
     services: group("dvigatel").items.filter((item) => item.name !== "Экспресс-замена масла"),
     symptoms: [
       "Двигатель троит, плохо заводится или глохнет.",
@@ -534,8 +488,8 @@ export const serviceCategories: ServiceCategory[] = [
     seoDescription:
       "Ремонт подвески в Балашихе: амортизаторы, стойки, шаровые, рычаги, сайлентблоки, ступичные подшипники. Диагностика и запись.",
     h1: "Ремонт подвески в Балашихе",
-    priceFrom: "от 1000 ₽",
-    offerPrice: 1000,
+    priceFrom: "от 500 ₽",
+    offerPrice: 500,
     services: group("podveska").items,
     symptoms: [
       "Стук на кочках или лежачих полицейских.",
@@ -601,51 +555,25 @@ export const serviceCategories: ServiceCategory[] = [
     image: "/images/service-placeholder.jpg"
   },
   {
-    slug: "konditsioner",
-    title: "Заправка и ремонт автокондиционера",
-    shortDescription:
-      "Заправка, диагностика, компрессор, радиаторы и система охлаждения.",
-    longDescription:
-      "Если кондиционер плохо холодит, появился запах или система долго не обслуживалась, проведем диагностику, заправку и ремонт узлов кондиционирования. Также занимаемся промывкой и чисткой радиаторов.",
-    seoTitle: "Заправка и ремонт автокондиционера в Балашихе",
-    seoDescription:
-      "Заправка, диагностика и ремонт автокондиционера в Балашихе. Ремонт компрессора, чистка радиаторов, промывка системы охлаждения.",
-    h1: "Заправка и ремонт автокондиционера в Балашихе",
-    priceFrom: "от 2500 ₽",
-    offerPrice: 2500,
-    services: group("konditsioner").items,
-    symptoms: [
-      "Кондиционер плохо охлаждает.",
-      "Появился запах при включении.",
-      "Слышен шум компрессора.",
-      "Двигатель перегревается или радиатор загрязнен.",
-      "Нужно обслужить систему перед сезоном."
-    ],
-    steps: commonSteps,
-    faq: commonFaq("ремонт автокондиционера"),
-    relatedServices: ["diagnostika-avto", "remont-dvigatelya", "zamena-masla"],
-    image: "/images/service-placeholder.jpg"
-  },
-  {
     slug: "transmissiya",
     title: "Ремонт трансмиссии",
     shortDescription:
-      "Сцепление, МКПП, АКПП, карданные валы, крестовины и раздаточные коробки.",
+      "Сцепление, МКПП, АКПП, крестовины, сальники, пыльники и прокладки.",
     longDescription:
-      "Если появились рывки, шум, вибрация или передачи включаются с трудом, проверим трансмиссию и согласуем дальнейшие работы. Работаем с МКПП, АКПП, сцеплением и карданными валами.",
+      "Если появились рывки, шум, вибрация или передачи включаются с трудом, проверим трансмиссию и согласуем дальнейшие работы. Работаем с МКПП, АКПП, сцеплением, крестовинами и сальниками.",
     seoTitle: "Ремонт трансмиссии, МКПП и АКПП в Балашихе",
     seoDescription:
-      "Ремонт трансмиссии в Балашихе: замена сцепления, МКПП, АКПП, карданных валов, крестовин, сальников и раздаточных коробок.",
+      "Ремонт трансмиссии в Балашихе: замена сцепления, МКПП, АКПП, крестовин, сальников, пыльников и прокладок.",
     h1: "Ремонт трансмиссии в Балашихе",
-    priceFrom: "от 2000 ₽",
-    offerPrice: 2000,
+    priceFrom: "от 1000 ₽",
+    offerPrice: 1000,
     services: group("transmissiya").items,
     symptoms: [
       "Передачи включаются с трудом.",
       "Есть рывки, вибрация или шум.",
       "Появились течи масла.",
       "Пробуксовывает сцепление.",
-      "Нужна проверка карданного вала или раздатки."
+      "Нужна проверка сцепления, МКПП или АКПП."
     ],
     steps: commonSteps,
     faq: commonFaq("ремонт трансмиссии"),
@@ -679,54 +607,33 @@ export const serviceCategories: ServiceCategory[] = [
     image: "/images/service-placeholder.jpg"
   },
   {
-    slug: "remont-stekol",
-    title: "Ремонт автостекол",
+    slug: "peskostruy",
+    title: "Пескоструй",
     shortDescription:
-      "Ремонт лобового стекла, трещин, сколов и полировка автостекол.",
+      "Очистка деталей пескоструем с оценкой объема и сложности работ.",
     longDescription:
-      "Если на стекле появился скол или трещина, лучше не откладывать осмотр. Подскажем, возможен ли ремонт, и согласуем стоимость до начала работ.",
-    seoTitle: "Ремонт автостекол в Балашихе - Авто друг",
+      "Пескоструй помогает подготовить деталь к ремонту, окраске или защите от коррозии. Стоимость зависит от размера, состояния, формы детали и сложности доступа к поверхностям.",
+    seoTitle: "Пескоструй в Балашихе - Авто друг",
     seoDescription:
-      "Ремонт лобового стекла, сколов, трещин и полировка автостекол в Балашихе. Цены от 3000 ₽, запись по телефону.",
-    h1: "Ремонт автостекол в Балашихе",
-    priceFrom: "от 3000 ₽",
-    offerPrice: 3000,
-    services: group("prochie").items.filter((item) => item.name.includes("стекла")),
+      "Пескоструйная очистка деталей в Балашихе. Стоимость зависит от объема и сложности детали, цены от 1000 ₽.",
+    h1: "Пескоструй в Балашихе",
+    priceFrom: "от 1000 ₽",
+    offerPrice: 1000,
+    services: group("prochie").items.filter((item) => item.name === "Пескоструй"),
     symptoms: [
-      "Появился скол после камня.",
-      "Трещина начала расходиться.",
-      "Лобовое стекло мешает обзору.",
-      "Нужна полировка стекла."
+      "Нужно очистить деталь от ржавчины или старого покрытия.",
+      "Деталь готовится к окраске или ремонту.",
+      "Есть сложная форма или труднодоступные участки.",
+      "Нужно оценить стоимость до начала работ."
     ],
-    steps: commonSteps,
-    faq: commonFaq("ремонт автостекол"),
-    relatedServices: ["tonirovka", "diagnostika-avto", "tseny"],
-    image: "/images/service-placeholder.jpg"
-  },
-  {
-    slug: "tonirovka",
-    title: "Тонировка автомобиля",
-    shortDescription:
-      "Тонировка и оклейка автомобиля с предварительным согласованием работ.",
-    longDescription:
-      "Выполняем тонировку и оклейку автомобиля. Перед работой объясним варианты, согласуем стоимость и сроки.",
-    seoTitle: "Тонировка автомобиля в Балашихе - Авто друг",
-    seoDescription:
-      "Тонировка и оклейка автомобиля в Балашихе. Цены от 3000 ₽, запись в автосервис «Авто друг» на Заводской улице, 7А.",
-    h1: "Тонировка автомобиля в Балашихе",
-    priceFrom: "от 3000 ₽",
-    offerPrice: 3000,
-    services: group("prochie").items.filter((item) =>
-      ["Тонировка автомобиля", "Оклейка автомобиля"].includes(item.name)
-    ),
-    symptoms: [
-      "Нужна тонировка стекол.",
-      "Планируете оклейку автомобиля.",
-      "Хотите заранее понять стоимость и сроки."
+    steps: [
+      "Осматриваем деталь и оцениваем состояние поверхности.",
+      "Согласовываем объем и сложность работ.",
+      "Выполняем пескоструйную очистку.",
+      "Показываем результат и рекомендации по дальнейшей защите."
     ],
-    steps: commonSteps,
-    faq: commonFaq("тонировку автомобиля"),
-    relatedServices: ["remont-stekol", "tseny", "kontakty"],
+    faq: commonFaq("пескоструй"),
+    relatedServices: ["diagnostika-avto", "remont-podveski", "remont-dvigatelya"],
     image: "/images/service-placeholder.jpg"
   }
 ];

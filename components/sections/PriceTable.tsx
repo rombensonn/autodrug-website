@@ -11,15 +11,14 @@ const baseFilterLabels = [
   { slug: "tormoza", title: "Тормоза" },
   { slug: "podveska", title: "Подвеска" },
   { slug: "diagnostika", title: "Диагностика" },
-  { slug: "konditsioner", title: "Кондиционер" },
   { slug: "transmissiya", title: "Трансмиссия" },
   { slug: "prochie", title: "Прочее" }
 ];
 
-const compactHiddenGroups = new Set(["konditsioner"]);
+const compactHiddenGroups = new Set<string>();
 const compactHiddenItems = new Set([
-  "Ремонт лобового стекла: трещины, сколы, полировка",
-  "Тонировка автомобиля"
+  "Промывка системы охлаждения",
+  "Чистка форсунок стендовая"
 ]);
 
 const compactAdditionalGroup = {
@@ -28,12 +27,12 @@ const compactAdditionalGroup = {
   items: [
     {
       name: "Промывка системы охлаждения",
-      price: "от 4000 ₽",
-      description: "Радиатор, печка и система охлаждения после осмотра."
+      price: "от 3000 ₽",
+      description: "Проверим систему и согласуем промывку до работ."
     },
     {
       name: "Чистка форсунок стендовая",
-      price: "цена уточняется",
+      price: "750 ₽ за 1 шт.",
       description: "Проверка и чистка форсунок после диагностики."
     },
     {

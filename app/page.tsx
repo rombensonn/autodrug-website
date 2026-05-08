@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import { AlertTriangle, BatteryWarning, CheckCircle2, Droplets, Fan, Gauge, ShieldAlert, Wrench } from "lucide-react";
+import type { SVGProps } from "react";
+import { BatteryWarning, CheckCircle2, Disc3, Droplets, Headphones, Wrench } from "lucide-react";
 import { Hero } from "@/components/sections/Hero";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { PricePreview } from "@/components/sections/PricePreview";
@@ -21,7 +22,7 @@ import { faqJsonLd, localBusinessJsonLd } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Автосервис и шиномонтаж в Балашихе - Авто друг",
   description:
-    "Автосервис «Авто друг» в Балашихе: диагностика, ремонт двигателя, подвески, тормозов, кондиционера и шиномонтаж R10-R24. Работаем ежедневно до 22:00."
+    "Автосервис «Авто друг» в Балашихе: диагностика, ремонт двигателя, подвески, тормозов, трансмиссии и шиномонтаж R10-R24. Работаем ежедневно до 22:00."
 });
 
 const reasons = [
@@ -41,31 +42,50 @@ const reasons = [
     detail: "подберем фильтры и масло под автомобиль"
   },
   {
-    icon: ShieldAlert,
+    icon: AbsIcon,
     title: "плохо тормозит",
     detail: "оценим колодки, диски, жидкость и суппорты"
   },
   {
-    icon: Gauge,
+    icon: Disc3,
     title: "нужна сезонная переобувка",
     detail: "шиномонтаж R10-R24, балансировка и ремонт"
   },
   {
-    icon: Fan,
-    title: "не работает кондиционер",
-    detail: "диагностика, заправка и поиск утечек"
-  },
-  {
-    icon: AlertTriangle,
+    icon: Headphones,
     title: "появился шум в подвеске",
     detail: "найдем источник стука до лишнего ремонта"
   },
   {
-    icon: CheckCircle2,
+    icon: CheckEngineIcon,
     title: "нужна срочная диагностика",
     detail: "подскажем ближайшее свободное окно"
   }
 ];
+
+function AbsIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" {...props}>
+      <rect height="14" rx="4" width="18" x="3" y="5" />
+      <path d="M6.6 15 8 9l1.4 6" />
+      <path d="M7.1 13h1.8" />
+      <path d="M11 9h2.2a1.5 1.5 0 0 1 0 3H11V9Z" />
+      <path d="M11 12h2.4a1.5 1.5 0 0 1 0 3H11v-3Z" />
+      <path d="M18 9h-1.4a1.4 1.4 0 0 0 0 2.8h.8a1.4 1.4 0 0 1 0 2.8H16" />
+    </svg>
+  );
+}
+
+function CheckEngineIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" {...props}>
+      <path d="M7 8h6l2 2h2.5a2.5 2.5 0 0 1 2.5 2.5v3A2.5 2.5 0 0 1 17.5 18H8l-2-3H4v-4h2l1-3Z" />
+      <path d="M9 5h5" />
+      <path d="M11.5 5v3" />
+      <path d="M20 13h2" />
+    </svg>
+  );
+}
 
 const benefits = [
   "Не навязываем лишнее.",
@@ -83,7 +103,7 @@ export default function HomePage() {
       <JsonLd data={faqJsonLd(mainFaq)} />
       <Hero />
 
-      <Section muted>
+      <Section id="symptoms" muted>
         <SectionHeading
           eyebrow="Когда стоит обратиться"
           title="Не ждите, пока мелкая неисправность станет дорогим ремонтом"

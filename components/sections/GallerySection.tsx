@@ -27,7 +27,7 @@ const facts = ["Реальная зона сервиса", "Оборудован
 
 export function GallerySection() {
   return (
-    <Section>
+    <Section id="gallery">
       <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
         <div>
           <SectionHeading
@@ -49,17 +49,23 @@ export function GallerySection() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-[1.15fr_0.85fr]">
-          <article className="group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft">
-            <div className="relative aspect-[4/3]">
-              <Image
-                alt={gallery[0].alt}
-                className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
-                fill
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                src={gallery[0].src}
-              />
+          <article className="group relative min-h-[420px] overflow-hidden rounded-lg border border-slate-200 bg-slate-950 shadow-lift md:min-h-full">
+            <Image
+              alt={gallery[0].alt}
+              className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
+              fill
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              src={gallery[0].src}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/35 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+              <GalleryCaption title={gallery[0].title} description={gallery[0].description} overlay />
+              <div className="mt-4 grid gap-2 text-xs font-bold text-white/85 sm:grid-cols-3">
+                <span className="rounded-md border border-white/15 bg-white/10 px-3 py-2">R10-R24</span>
+                <span className="rounded-md border border-white/15 bg-white/10 px-3 py-2">Балансировка</span>
+                <span className="rounded-md border border-white/15 bg-white/10 px-3 py-2">Ремонт колес</span>
+              </div>
             </div>
-            <GalleryCaption title={gallery[0].title} description={gallery[0].description} />
           </article>
 
           <div className="grid gap-4">
@@ -90,21 +96,31 @@ export function GallerySection() {
 function GalleryCaption({
   title,
   description,
-  compact = false
+  compact = false,
+  overlay = false
 }: {
   title: string;
   description: string;
   compact?: boolean;
+  overlay?: boolean;
 }) {
   return (
-    <div className={compact ? "p-4" : "p-5"}>
+    <div className={overlay ? "" : compact ? "p-4" : "p-5"}>
       <div className="flex items-center gap-3">
-        <span className="flex h-9 w-9 items-center justify-center rounded-md bg-orange-50 text-primary">
+        <span
+          className={
+            overlay
+              ? "flex h-10 w-10 items-center justify-center rounded-md bg-white text-primary shadow-soft"
+              : "flex h-9 w-9 items-center justify-center rounded-md bg-orange-50 text-primary"
+          }
+        >
           <Camera aria-hidden className="h-5 w-5" />
         </span>
-        <h3 className="text-lg font-black text-slate-950">{title}</h3>
+        <h3 className={overlay ? "text-xl font-black text-white" : "text-lg font-black text-slate-950"}>{title}</h3>
       </div>
-      <p className="mt-3 text-sm leading-6 text-slate-600">{description}</p>
+      <p className={overlay ? "mt-3 max-w-sm text-sm leading-6 text-white/80" : "mt-3 text-sm leading-6 text-slate-600"}>
+        {description}
+      </p>
     </div>
   );
 }
