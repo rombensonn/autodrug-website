@@ -15,7 +15,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "py-16 sm:py-20",
+        "scroll-mt-20 py-16 motion-safe:animate-fade-up sm:py-20",
         muted ? "bg-slate-50" : "bg-background",
         className
       )}
@@ -37,7 +37,7 @@ export function SectionHeading({
   className?: string;
 }) {
   return (
-    <div className={cn("mb-10 max-w-3xl", className)}>
+    <div className={cn("mb-10 max-w-3xl motion-safe:animate-soft-scale", className)}>
       {eyebrow ? (
         <p className="mb-3 text-sm font-bold uppercase tracking-normal text-primary">
           {eyebrow}

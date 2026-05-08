@@ -12,7 +12,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 shadow-[0_1px_0_rgba(15,23,42,0.03)] backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link aria-label="Авто друг, главная" className="flex items-center gap-3" href="/">
           <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-950 text-lg font-black text-white">
@@ -27,7 +27,7 @@ export function Header() {
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Основное меню">
           {mainNavigation.map((item) => (
             <Link
-              className="text-sm font-semibold text-slate-700 hover:text-primary"
+              className="rounded-md px-1 py-2 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               href={item.href}
               key={item.href}
             >
@@ -39,7 +39,7 @@ export function Header() {
         <div className="hidden items-center gap-3 md:flex">
           <TrackedLink
             aria-label={`Позвонить ${business.phoneDisplay}`}
-            className="inline-flex items-center gap-2 text-sm font-bold text-slate-950 hover:text-primary"
+            className="inline-flex min-h-11 items-center gap-2 rounded-md px-2 text-sm font-bold text-slate-950 transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             event="phone_click"
             href={business.phoneHref}
           >
@@ -53,7 +53,7 @@ export function Header() {
 
         <button
           aria-label={open ? "Закрыть меню" : "Открыть меню"}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-200 text-slate-900 lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-200 text-slate-900 transition-[background-color,border-color,transform] duration-200 hover:border-primary/30 hover:bg-slate-50 active:translate-y-px lg:hidden"
           onClick={() => setOpen((value) => !value)}
           type="button"
         >
@@ -62,11 +62,11 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="border-t border-slate-200 bg-white px-4 py-4 shadow-soft lg:hidden">
+        <div className="border-t border-slate-200 bg-white px-4 py-4 shadow-soft motion-safe:animate-soft-scale lg:hidden">
           <nav className="grid gap-2" aria-label="Мобильное меню">
             {mainNavigation.map((item) => (
               <Link
-                className="rounded-md px-3 py-3 text-base font-semibold text-slate-800 hover:bg-slate-50"
+                className="rounded-md px-3 py-3 text-base font-semibold text-slate-800 transition-colors duration-200 hover:bg-slate-50"
                 href={item.href}
                 key={item.href}
                 onClick={() => setOpen(false)}

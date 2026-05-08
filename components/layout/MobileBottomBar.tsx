@@ -41,7 +41,7 @@ export function MobileBottomBar() {
       {items.map((item) => {
         const Icon = item.icon;
         const className =
-          "flex min-h-12 flex-col items-center justify-center gap-1 rounded-md text-[11px] font-semibold text-slate-700 hover:bg-slate-50";
+          "flex min-h-12 flex-col items-center justify-center gap-1 rounded-md text-[11px] font-semibold text-slate-700 transition-[background-color,color,transform] duration-200 hover:bg-slate-50 active:translate-y-px";
         if (item.internal) {
           return (
             <Link className={className} href={item.href} key={item.label}>

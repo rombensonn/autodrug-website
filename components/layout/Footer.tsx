@@ -32,7 +32,7 @@ export function Footer() {
           <ul className="mt-4 grid gap-3">
             {footerNavigation.map((item) => (
               <li key={item.href}>
-                <Link className="text-sm text-slate-200 hover:text-white" href={item.href}>
+                <Link className="text-sm text-slate-200 transition-colors duration-200 hover:text-white" href={item.href}>
                   {item.label}
                 </Link>
               </li>
@@ -48,7 +48,7 @@ export function Footer() {
             {serviceCategories.slice(0, 8).map((service) => (
               <li key={service.slug}>
                 <Link
-                  className="text-sm text-slate-200 hover:text-white"
+                  className="text-sm text-slate-200 transition-colors duration-200 hover:text-white"
                   href={`/uslugi/${service.slug}`}
                 >
                   {service.title}
@@ -66,7 +66,7 @@ export function Footer() {
             <p>{business.name}</p>
             <p>{business.address}</p>
             <TrackedLink
-              className="font-bold text-white hover:text-primary"
+              className="font-bold text-white transition-colors duration-200 hover:text-primary"
               event="phone_click"
               href={business.phoneHref}
             >

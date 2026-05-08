@@ -6,16 +6,17 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-md text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-md text-sm font-semibold shadow-sm transition-[background-color,border-color,color,box-shadow,transform] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:translate-y-px disabled:pointer-events-none disabled:translate-y-0 disabled:opacity-50 motion-safe:hover:-translate-y-0.5",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/90",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-focus",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:shadow-focus",
         outline:
-          "border border-border bg-background text-foreground hover:bg-muted",
-        ghost: "text-foreground hover:bg-muted",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border border-border bg-background text-foreground hover:border-primary/35 hover:bg-muted",
+        ghost: "text-foreground shadow-none hover:bg-muted",
+        link:
+          "text-primary shadow-none underline-offset-4 hover:underline motion-safe:hover:translate-y-0 active:translate-y-0",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90"
       },
