@@ -43,6 +43,7 @@ const reasons = [
   },
   {
     icon: AbsIcon,
+    iconClassName: "h-6 w-6",
     title: "плохо тормозит",
     detail: "оценим колодки, диски, жидкость и суппорты"
   },
@@ -65,13 +66,33 @@ const reasons = [
 
 function AbsIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" {...props}>
-      <rect height="14" rx="4" width="18" x="3" y="5" />
-      <path d="M6.6 15 8 9l1.4 6" />
-      <path d="M7.1 13h1.8" />
-      <path d="M11 9h2.2a1.5 1.5 0 0 1 0 3H11V9Z" />
-      <path d="M11 12h2.4a1.5 1.5 0 0 1 0 3H11v-3Z" />
-      <path d="M18 9h-1.4a1.4 1.4 0 0 0 0 2.8h.8a1.4 1.4 0 0 1 0 2.8H16" />
+    <svg fill="none" viewBox="0 0 32 32" {...props}>
+      <path
+        d="M3.5 8.5c-2.1 4.7-2.1 10.3 0 15"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="4"
+      />
+      <path
+        d="M28.5 8.5c2.1 4.7 2.1 10.3 0 15"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="4"
+      />
+      <circle cx="16" cy="16" r="9.5" stroke="currentColor" strokeWidth="3" />
+      <text
+        dominantBaseline="middle"
+        fill="currentColor"
+        fontFamily="Arial, sans-serif"
+        fontSize="7.2"
+        fontWeight="900"
+        letterSpacing="0"
+        textAnchor="middle"
+        x="16"
+        y="16.7"
+      >
+        ABS
+      </text>
     </svg>
   );
 }
@@ -144,7 +165,7 @@ export default function HomePage() {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex h-11 w-11 items-center justify-center rounded-md bg-orange-50 text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-white">
-                      <Icon aria-hidden className="h-5 w-5" />
+                      <Icon aria-hidden className={item.iconClassName ?? "h-5 w-5"} />
                     </div>
                     <span className="text-xs font-black text-slate-300">
                       {String(index + 1).padStart(2, "0")}
