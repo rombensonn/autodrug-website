@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send } from "lucide-react";
-import { leadServiceOptions } from "@/data/services";
+import { serviceCategories } from "@/data/services";
 import { business } from "@/data/business";
 import { leadInputSchema, type LeadFormInput } from "@/lib/leadSchema";
 import { Button } from "@/components/ui/button";
@@ -117,9 +117,9 @@ export function LeadForm({
         <Field label="Услуга" error={errors.service?.message}>
           <Select {...register("service")}>
             <option value="">Не знаю, нужна диагностика</option>
-            {leadServiceOptions.map((service) => (
-              <option key={service.value} value={service.value}>
-                {service.label}
+            {serviceCategories.map((service) => (
+              <option key={service.slug} value={service.title}>
+                {service.title}
               </option>
             ))}
           </Select>

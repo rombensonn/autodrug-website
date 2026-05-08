@@ -292,9 +292,14 @@ export const priceGroups: PriceGroup[] = [
     ]
   },
   {
-    slug: "ohlazhdenie",
-    title: "Система охлаждения",
+    slug: "konditsioner",
+    title: "Кондиционер и система охлаждения",
     items: [
+      {
+        name: "Замена и ремонт компрессоров и узлов кондиционирования",
+        price: "от 3000 ₽",
+        offerPrice: 3000
+      },
       {
         name: "Промывка основного радиатора",
         price: "от 2500 ₽",
@@ -302,11 +307,21 @@ export const priceGroups: PriceGroup[] = [
       },
       { name: "Промывка радиатора печки", price: "от 3500 ₽", offerPrice: 3500 },
       {
-        name: "Промывка системы охлаждения",
+        name: "Промывка системы охлаждения двигателя",
         price: "от 4000 ₽",
         offerPrice: 4000
       },
-      { name: "Чистка радиаторов", price: "от 2500 ₽", offerPrice: 2500 }
+      {
+        name: "Заправка системы кондиционирования",
+        price: "от 5000 ₽",
+        offerPrice: 5000
+      },
+      { name: "Чистка радиаторов", price: "от 2500 ₽", offerPrice: 2500 },
+      {
+        name: "Диагностика системы кондиционирования",
+        price: "от 2500 ₽",
+        offerPrice: 2500
+      }
     ]
   },
   {
@@ -364,8 +379,13 @@ export const priceGroups: PriceGroup[] = [
         price: "от 1000 ₽",
         offerPrice: 1000
       },
+      {
+        name: "Ремонт лобового стекла: трещины, сколы, полировка",
+        price: "от 3000 ₽",
+        offerPrice: 3000
+      },
+      { name: "Тонировка автомобиля", price: "от 3000 ₽", offerPrice: 3000 },
       { name: "Оклейка автомобиля", price: "от 3000 ₽", offerPrice: 3000 },
-      { name: "Чистка форсунок стендовая", price: "цена уточняется" },
       { name: "Установка фаркопа", price: "цена уточняется" },
       { name: "Сварочные работы", price: "от 1000 ₽", offerPrice: 1000 },
       { name: "Выездная диагностика автомобиля", price: "цена уточняется" },
@@ -581,55 +601,30 @@ export const serviceCategories: ServiceCategory[] = [
     image: "/images/service-placeholder.jpg"
   },
   {
-    slug: "promyvka-sistemy-ohlazhdeniya",
-    title: "Промывка системы охлаждения",
+    slug: "konditsioner",
+    title: "Заправка и ремонт автокондиционера",
     shortDescription:
-      "Промывка системы охлаждения, радиатора и печки с предварительной диагностикой.",
+      "Заправка, диагностика, компрессор, радиаторы и система охлаждения.",
     longDescription:
-      "Если двигатель перегревается, печка хуже греет или охлаждающая жидкость давно не менялась, лучше проверить систему охлаждения. Мастер осмотрит узлы, объяснит причину и согласует промывку до начала работ.",
-    seoTitle: "Промывка системы охлаждения в Балашихе — Авто друг",
+      "Если кондиционер плохо холодит, появился запах или система долго не обслуживалась, проведем диагностику, заправку и ремонт узлов кондиционирования. Также занимаемся промывкой и чисткой радиаторов.",
+    seoTitle: "Заправка и ремонт автокондиционера в Балашихе",
     seoDescription:
-      "Промывка системы охлаждения в Балашихе: основной радиатор, радиатор печки, чистка радиаторов. Цены от 2500 ₽, запись в Авто друг.",
-    h1: "Промывка системы охлаждения в Балашихе",
+      "Заправка, диагностика и ремонт автокондиционера в Балашихе. Ремонт компрессора, чистка радиаторов, промывка системы охлаждения.",
+    h1: "Заправка и ремонт автокондиционера в Балашихе",
     priceFrom: "от 2500 ₽",
     offerPrice: 2500,
-    services: group("ohlazhdenie").items,
+    services: group("konditsioner").items,
     symptoms: [
-      "Двигатель стал перегреваться.",
-      "Печка хуже греет салон.",
-      "Охлаждающая жидкость потемнела или давно не менялась.",
-      "После диагностики рекомендована промывка радиатора.",
-      "Нужно восстановить нормальную работу системы охлаждения."
+      "Кондиционер плохо охлаждает.",
+      "Появился запах при включении.",
+      "Слышен шум компрессора.",
+      "Двигатель перегревается или радиатор загрязнен.",
+      "Нужно обслужить систему перед сезоном."
     ],
     steps: commonSteps,
-    faq: commonFaq("промывку системы охлаждения"),
+    faq: commonFaq("ремонт автокондиционера"),
     relatedServices: ["diagnostika-avto", "remont-dvigatelya", "zamena-masla"],
     image: "/images/service-placeholder.jpg"
-  },
-  {
-    slug: "chistka-forsunok-stendovaya",
-    title: "Чистка форсунок стендовая",
-    shortDescription:
-      "Стендовая чистка форсунок после диагностики и согласования работ.",
-    longDescription:
-      "Если двигатель троит, вырос расход топлива или появились неровные обороты, форсунки стоит проверить. В «Авто друг» мастер проведет диагностику, объяснит результат и согласует стендовую чистку до начала работ.",
-    seoTitle: "Чистка форсунок стендовая в Балашихе — Авто друг",
-    seoDescription:
-      "Стендовая чистка форсунок в Балашихе: диагностика, согласование работ и помощь с запчастями при необходимости. Запись в Авто друг.",
-    h1: "Стендовая чистка форсунок в Балашихе",
-    priceFrom: "цена уточняется",
-    services: group("prochie").items.filter((item) => item.name === "Чистка форсунок стендовая"),
-    symptoms: [
-      "Двигатель работает неровно или троит.",
-      "Плавают обороты на холостом ходу.",
-      "Увеличился расход топлива.",
-      "Автомобиль хуже разгоняется.",
-      "После диагностики нужна проверка форсунок на стенде."
-    ],
-    steps: commonSteps,
-    faq: commonFaq("стендовую чистку форсунок"),
-    relatedServices: ["diagnostika-avto", "remont-dvigatelya", "zamena-masla"],
-    image: "/images/engine-repair.jpg"
   },
   {
     slug: "transmissiya",
@@ -682,19 +677,61 @@ export const serviceCategories: ServiceCategory[] = [
     faq: commonFaq("ремонт выхлопной системы"),
     relatedServices: ["diagnostika-avto", "remont-dvigatelya", "transmissiya"],
     image: "/images/service-placeholder.jpg"
+  },
+  {
+    slug: "remont-stekol",
+    title: "Ремонт автостекол",
+    shortDescription:
+      "Ремонт лобового стекла, трещин, сколов и полировка автостекол.",
+    longDescription:
+      "Если на стекле появился скол или трещина, лучше не откладывать осмотр. Подскажем, возможен ли ремонт, и согласуем стоимость до начала работ.",
+    seoTitle: "Ремонт автостекол в Балашихе - Авто друг",
+    seoDescription:
+      "Ремонт лобового стекла, сколов, трещин и полировка автостекол в Балашихе. Цены от 3000 ₽, запись по телефону.",
+    h1: "Ремонт автостекол в Балашихе",
+    priceFrom: "от 3000 ₽",
+    offerPrice: 3000,
+    services: group("prochie").items.filter((item) => item.name.includes("стекла")),
+    symptoms: [
+      "Появился скол после камня.",
+      "Трещина начала расходиться.",
+      "Лобовое стекло мешает обзору.",
+      "Нужна полировка стекла."
+    ],
+    steps: commonSteps,
+    faq: commonFaq("ремонт автостекол"),
+    relatedServices: ["tonirovka", "diagnostika-avto", "tseny"],
+    image: "/images/service-placeholder.jpg"
+  },
+  {
+    slug: "tonirovka",
+    title: "Тонировка автомобиля",
+    shortDescription:
+      "Тонировка и оклейка автомобиля с предварительным согласованием работ.",
+    longDescription:
+      "Выполняем тонировку и оклейку автомобиля. Перед работой объясним варианты, согласуем стоимость и сроки.",
+    seoTitle: "Тонировка автомобиля в Балашихе - Авто друг",
+    seoDescription:
+      "Тонировка и оклейка автомобиля в Балашихе. Цены от 3000 ₽, запись в автосервис «Авто друг» на Керамической улице, 2Б.",
+    h1: "Тонировка автомобиля в Балашихе",
+    priceFrom: "от 3000 ₽",
+    offerPrice: 3000,
+    services: group("prochie").items.filter((item) =>
+      ["Тонировка автомобиля", "Оклейка автомобиля"].includes(item.name)
+    ),
+    symptoms: [
+      "Нужна тонировка стекол.",
+      "Планируете оклейку автомобиля.",
+      "Хотите заранее понять стоимость и сроки."
+    ],
+    steps: commonSteps,
+    faq: commonFaq("тонировку автомобиля"),
+    relatedServices: ["remont-stekol", "tseny", "kontakty"],
+    image: "/images/service-placeholder.jpg"
   }
 ];
 
 export const featuredServiceSlugs = serviceCategories.map((service) => service.slug);
-
-export type LeadServiceOption = {
-  label: string;
-  value: string;
-};
-
-export const leadServiceOptions: LeadServiceOption[] = [
-  ...serviceCategories.map((service) => ({ label: service.title, value: service.title }))
-];
 
 export function getServiceBySlug(slug: string) {
   return serviceCategories.find((service) => service.slug === slug);

@@ -4,23 +4,78 @@ import { useMemo, useState } from "react";
 import { priceGroups } from "@/data/services";
 import { cn } from "@/lib/utils";
 
-const filterLabels = [
+const baseFilterLabels = [
   { slug: "all", title: "Все" },
   { slug: "shinomontazh", title: "Шиномонтаж" },
   { slug: "dvigatel", title: "Двигатель" },
   { slug: "tormoza", title: "Тормоза" },
   { slug: "podveska", title: "Подвеска" },
   { slug: "diagnostika", title: "Диагностика" },
-  { slug: "ohlazhdenie", title: "Охлаждение" },
+  { slug: "konditsioner", title: "Кондиционер" },
   { slug: "transmissiya", title: "Трансмиссия" },
   { slug: "prochie", title: "Прочее" }
 ];
 
+const compactHiddenGroups = new Set(["konditsioner"]);
+const compactHiddenItems = new Set([
+  "Ремонт лобового стекла: трещины, сколы, полировка",
+  "Тонировка автомобиля"
+]);
+
+const compactAdditionalGroup = {
+  slug: "additional-popular",
+  title: "Дополнительные услуги",
+  items: [
+    {
+      name: "Промывка системы охлаждения",
+      price: "от 4000 ₽",
+      description: "Радиатор, печка и система охлаждения после осмотра."
+    },
+    {
+      name: "Чистка форсунок стендовая",
+      price: "цена уточняется",
+      description: "Проверка и чистка форсунок после диагностики."
+    },
+    {
+      name: "Правка дисков (литые или штампованные)",
+      price: "от 500 ₽",
+      description: "Оценим геометрию диска и согласуем работу до ремонта."
+    }
+  ]
+};
+
 export function PriceTable({ compact = false }: { compact?: boolean }) {
   const [active, setActive] = useState("all");
+  const filterLabels = useMemo(
+    () =>
+      compact
+        ? [
+            ...baseFilterLabels.filter((filter) => !compactHiddenGroups.has(filter.slug)),
+            { slug: compactAdditionalGroup.slug, title: "Дополнительно" }
+          ]
+        : baseFilterLabels,
+    [compact]
+  );
   const groups = useMemo(() => {
-    const selected = active === "all" ? priceGroups : priceGroups.filter((group) => group.slug === active);
-    return compact ? selected.map((group) => ({ ...group, items: group.items.slice(0, 5) })) : selected;
+    if (!compact) {
+      return active === "all" ? priceGroups : priceGroups.filter((group) => group.slug === active);
+    }
+
+    if (active === compactAdditionalGroup.slug) {
+      return [compactAdditionalGroup];
+    }
+
+    const selected =
+      active === "all"
+        ? priceGroups.filter((group) => !compactHiddenGroups.has(group.slug))
+        : priceGroups.filter((group) => group.slug === active && !compactHiddenGroups.has(group.slug));
+
+    const compactGroups = selected.map((group) => ({
+      ...group,
+      items: group.items.filter((item) => !compactHiddenItems.has(item.name)).slice(0, 5)
+    }));
+
+    return active === "all" ? [...compactGroups, compactAdditionalGroup] : compactGroups;
   }, [active, compact]);
 
   return (
