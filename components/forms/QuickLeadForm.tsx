@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight } from "lucide-react";
 import { z } from "zod";
 import { business } from "@/data/business";
+import { getLeadEndpoint } from "@/lib/leadEndpoint";
 import { countPhoneDigits, sanitizePhoneInput } from "@/lib/phone";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -75,7 +76,7 @@ export function QuickLeadForm({ service }: { service?: string }) {
       return;
     }
 
-    const response = await fetch("/api/lead", {
+    const response = await fetch(getLeadEndpoint(), {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
@@ -104,8 +105,7 @@ export function QuickLeadForm({ service }: { service?: string }) {
     >
       <h2 className="text-xl font-bold text-slate-950">Получить ориентир по стоимости</h2>
       <p className="mt-2 text-sm leading-6 text-slate-600">
-        Оставьте телефон и пару слов о проблеме. Не передаем данные в WhatsApp или
-        зарубежные сервисы.
+        Оставьте телефон и пару слов о проблеме. Мастер свяжется с вами и подскажет ближайший шаг.
       </p>
       {process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true" ? (
         <p className="mt-3 rounded-md bg-orange-50 p-3 text-sm leading-6 text-orange-900">
@@ -149,10 +149,11 @@ export function QuickLeadForm({ service }: { service?: string }) {
       <label className="mt-4 flex items-start gap-3 text-sm leading-6 text-slate-700">
         <Checkbox {...register("consentAccepted")} />
           <span>
-            Согласен на обработку персональных данных.{" "}
+            Даю{" "}
             <Link className="font-semibold text-primary underline" href="/personal-data-consent">
-              Текст согласия
-            </Link>
+              согласие на обработку персональных данных
+            </Link>{" "}
+            для обработки моей заявки и обратной связи.
           </span>
       </label>
       {errors.consentAccepted?.message ? (
@@ -162,10 +163,8 @@ export function QuickLeadForm({ service }: { service?: string }) {
       <label className="mt-3 flex items-start gap-3 text-sm leading-6 text-slate-700">
         <Checkbox {...register("privacyAccepted")} />
         <span>
-          Ознакомлен с{" "}
-          <Link className="font-semibold text-primary underline" href="/privacy">
-            политикой конфиденциальности
-          </Link>
+          Подтверждаю, что ознакомлен(а) с{" "}
+          <Link className="font-semibold text-primary underline" href="/privacy">Политикой обработки персональных данных</Link>.
         </span>
       </label>
       {errors.privacyAccepted?.message ? (

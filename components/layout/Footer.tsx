@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { business } from "@/data/business";
-import { footerNavigation } from "@/data/navigation";
+import { footerNavigation, legalFooterNavigation } from "@/data/navigation";
 import { serviceCategories } from "@/data/services";
 import { TrackedLink } from "@/components/ui/tracked-link";
 import { publicAsset } from "@/lib/utils";
@@ -87,8 +87,35 @@ export function Footer() {
             >
               {business.phoneDisplay}
             </TrackedLink>
+            <TrackedLink
+              className="font-bold text-white transition-colors duration-200 hover:text-primary"
+              event="email_click"
+              href={business.emailHref}
+            >
+              {business.emailDisplay}
+            </TrackedLink>
             <p>{business.workTime}</p>
             <p>{business.areaServed}</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="border-t border-white/10 pt-6">
+          <div className="flex flex-col gap-4 text-xs leading-5 text-slate-400 lg:flex-row lg:items-center lg:justify-between">
+            <p>Правовая информация и персональные данные</p>
+            <ul className="grid gap-2 sm:flex sm:flex-wrap sm:gap-x-5 sm:gap-y-2 lg:justify-end">
+              {legalFooterNavigation.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    className="font-medium text-slate-300 underline-offset-4 transition-colors duration-200 hover:text-white hover:underline"
+                    href={item.href}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

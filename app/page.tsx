@@ -224,7 +224,7 @@ export default function HomePage() {
             </p>
             <div className="mt-6 grid gap-3 text-sm font-semibold text-slate-100">
               {[
-                "Не передаем данные в WhatsApp URL",
+                "Перезвоним и уточним детали",
                 "Сначала диагностика, потом согласование",
                 "Поможем с запчастями, если нужно"
               ].map((item) => (

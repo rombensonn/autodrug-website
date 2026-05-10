@@ -4,6 +4,7 @@ import { env } from "@/lib/env";
 const allowedEvents = new Set([
   "page_view",
   "phone_click",
+  "email_click",
   "whatsapp_click",
   "lead_submit",
   "route_click",

@@ -22,6 +22,13 @@ export function TrackedLink({
   ...props
 }: TrackedLinkProps) {
   function track() {
+    if (
+      process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true" ||
+      process.env.NEXT_PUBLIC_DISABLE_LOCAL_ANALYTICS === "true"
+    ) {
+      return;
+    }
+
     const body = JSON.stringify({ event, page: page || window.location.pathname });
     const blob = new Blob([body], { type: "application/json" });
     if (navigator.sendBeacon) {

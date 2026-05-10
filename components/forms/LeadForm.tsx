@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Send } from "lucide-react";
 import { serviceCategories } from "@/data/services";
 import { business } from "@/data/business";
+import { getLeadEndpoint } from "@/lib/leadEndpoint";
 import { leadInputSchema, type LeadFormInput } from "@/lib/leadSchema";
 import { sanitizePhoneInput } from "@/lib/phone";
 import { Button } from "@/components/ui/button";
@@ -62,7 +63,7 @@ export function LeadForm({
       return;
     }
 
-    const response = await fetch("/api/lead", {
+    const response = await fetch(getLeadEndpoint(), {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
@@ -173,10 +174,11 @@ export function LeadForm({
       <label className="mt-5 flex items-start gap-3 text-sm leading-6 text-slate-700">
         <Checkbox {...register("consentAccepted")} />
         <span>
-          Согласен на обработку персональных данных.{" "}
+          Даю{" "}
           <Link className="font-semibold text-primary underline" href="/personal-data-consent">
-            Текст согласия
-          </Link>
+            согласие на обработку персональных данных
+          </Link>{" "}
+          для обработки моей заявки и обратной связи.
         </span>
       </label>
       {errors.consentAccepted?.message ? (
@@ -188,10 +190,8 @@ export function LeadForm({
       <label className="mt-3 flex items-start gap-3 text-sm leading-6 text-slate-700">
         <Checkbox {...register("privacyAccepted")} />
         <span>
-          Ознакомлен с{" "}
-          <Link className="font-semibold text-primary underline" href="/privacy">
-            политикой конфиденциальности
-          </Link>
+          Подтверждаю, что ознакомлен(а) с{" "}
+          <Link className="font-semibold text-primary underline" href="/privacy">Политикой обработки персональных данных</Link>.
         </span>
       </label>
       {errors.privacyAccepted?.message ? (

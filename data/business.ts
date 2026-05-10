@@ -6,6 +6,8 @@ export const business = {
   streetAddress: "Заводская улица, 7А",
   phoneDisplay: "+7 (929) 942-25-13",
   phoneHref: "tel:+79299422513",
+  emailDisplay: "g30107@gmail.com",
+  emailHref: "mailto:g30107@gmail.com",
   whatsappUrl:
     "https://wa.me/79299422513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%B2%20%D0%B0%D0%B2%D1%82%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%20%D0%90%D0%B2%D1%82%D0%BE%20%D0%B4%D1%80%D1%83%D0%B3.",
   mapUrl:
@@ -28,12 +30,18 @@ export const business = {
     inn: "501210670335",
     ogrnip: "312501203300033",
     registrationDate: "02.02.2012",
+    egripExtractDate: "08.05.2026",
+    egripExtractNumber: "ИЭ9965-26-43866405",
+    registrationAuthority: "Межрайонная инспекция Федеральной налоговой службы №23 по Московской области",
+    registrationAuthorityAddress:
+      "144000, Россия, Московская область, г. Электросталь, ул. Советская, 26А",
+    taxAuthority: "Межрайонная инспекция Федеральной налоговой службы №20 по Московской области",
     mainOkved:
       "45.20 Техническое обслуживание и ремонт автотранспортных средств",
-    personalDataEmail: "[указать e-mail владельца сайта]"
+    personalDataEmail: "g30107@gmail.com"
   },
-  consentVersion: "2026-05-08",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://example.ru",
+  consentVersion: "2026-05-10",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://autodrug.online",
   logo: "/images/logo.png"
 } as const;
 

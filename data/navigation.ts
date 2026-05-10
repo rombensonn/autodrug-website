@@ -6,7 +6,16 @@ export const mainNavigation = [
 ];
 
 export const footerNavigation = [
-  ...mainNavigation,
-  { href: "/privacy", label: "Политика конфиденциальности" },
-  { href: "/personal-data-consent", label: "Согласие на обработку ПДн" }
+  ...mainNavigation
+];
+
+export const legalFooterNavigation = [
+  {
+    href: "/privacy",
+    label: "Политика обработки персональных данных"
+  },
+  {
+    href: "/personal-data-consent",
+    label: "Согласие на обработку персональных данных"
+  }
 ];

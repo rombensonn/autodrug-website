@@ -15,6 +15,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileBottomBar } from "@/components/layout/MobileBottomBar";
+import { NoBreakPrepositions } from "@/components/layout/NoBreakPrepositions";
 import { PageViewTracker } from "@/components/layout/PageViewTracker";
 import { YandexMetrica } from "@/components/layout/YandexMetrica";
 import { business } from "@/data/business";
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <MobileBottomBar />
         <PageViewTracker />
         <YandexMetrica />
+        <NoBreakPrepositions />
       </body>
     </html>
   );

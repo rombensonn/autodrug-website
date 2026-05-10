@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
+    "build:hosting": "node scripts/build-reg-hosting.mjs",
     "build:static": "node scripts/build-static-preview.mjs",
     "start": "next start",
+    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/*.test.ts",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",

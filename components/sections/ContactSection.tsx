@@ -1,6 +1,6 @@
 "use client";
 
-import { CreditCard, MapPinned, MessageCircle, Phone } from "lucide-react";
+import { CreditCard, Mail, MapPinned, MessageCircle, Phone } from "lucide-react";
 import { business } from "@/data/business";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -48,6 +48,12 @@ export function ContactSection({ withFormSlot }: { withFormSlot?: React.ReactNod
                   </a>
                 </Button>
               ) : null}
+              <Button asChild variant="outline">
+                <TrackedLink event="email_click" href={business.emailHref}>
+                  <Mail aria-hidden className="h-4 w-4" />
+                  E-mail
+                </TrackedLink>
+              </Button>
               <Button asChild variant="outline">
                 <TrackedLink
                   event="route_click"

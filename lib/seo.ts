@@ -24,6 +24,7 @@ export function localBusinessJsonLd() {
       absoluteUrl("/images/engine-repair.jpg")
     ],
     telephone: business.phoneDisplay,
+    email: business.emailDisplay,
     url: absoluteUrl("/"),
     priceRange: "₽₽",
     paymentAccepted: "Cash, Credit Card, Bank Transfer",
@@ -82,6 +83,7 @@ export function serviceJsonLd(service: ServiceCategory) {
       legalName: business.legal.operatorName,
       taxID: business.legal.inn,
       telephone: business.phoneDisplay,
+      email: business.emailDisplay,
       address: {
         "@type": "PostalAddress",
         addressLocality: business.city,

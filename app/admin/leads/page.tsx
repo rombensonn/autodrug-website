@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminLeadsPage() {
-  if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true") {
+  if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true" || process.env.NEXT_OUTPUT === "export") {
     return (
       <Section>
         <div className="mx-auto max-w-xl rounded-lg border border-slate-200 bg-white p-6 shadow-soft">

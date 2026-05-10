@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { business } from "@/data/business";
+import { getLeadEndpoint } from "@/lib/leadEndpoint";
 import { sanitizePhoneInput } from "@/lib/phone";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -40,7 +41,7 @@ export function ServiceQuiz() {
     }
 
     setLoading(true);
-    const response = await fetch("/api/lead", {
+    const response = await fetch(getLeadEndpoint(), {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
@@ -116,10 +117,11 @@ export function ServiceQuiz() {
           onChange={(event) => setConsentAccepted(event.target.checked)}
         />
         <span>
-          Согласен на обработку персональных данных.{" "}
+          Даю{" "}
           <Link className="font-semibold text-primary underline" href="/personal-data-consent">
-            Текст согласия
-          </Link>
+            согласие на обработку персональных данных
+          </Link>{" "}
+          для обработки моей заявки и обратной связи.
         </span>
       </label>
 
@@ -129,10 +131,8 @@ export function ServiceQuiz() {
           onChange={(event) => setPrivacyAccepted(event.target.checked)}
         />
         <span>
-          Ознакомлен с{" "}
-          <Link className="font-semibold text-primary underline" href="/privacy">
-            политикой конфиденциальности
-          </Link>
+          Подтверждаю, что ознакомлен(а) с{" "}
+          <Link className="font-semibold text-primary underline" href="/privacy">Политикой обработки персональных данных</Link>.
         </span>
       </label>
 

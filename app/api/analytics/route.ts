@@ -8,6 +8,7 @@ const schema = z.object({
   event: z.enum([
     "page_view",
     "phone_click",
+    "email_click",
     "whatsapp_click",
     "lead_submit",
     "route_click",

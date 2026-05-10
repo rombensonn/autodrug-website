@@ -6,6 +6,7 @@ import path from "node:path";
 const root = process.cwd();
 const apiPath = path.join(root, "app", "api");
 const disabledApiPath = path.join(root, "app", "__api_static_disabled__");
+const phpLeadEndpointPath = path.join(root, "out", "api", "lead.php");
 const npmCommand = process.platform === "win32" ? "cmd.exe" : "npm";
 const npmArgsPrefix = process.platform === "win32" ? ["/d", "/s", "/c", "npm.cmd"] : [];
 
@@ -39,18 +40,22 @@ try {
 
   await run(npmCommand, [...npmArgsPrefix, "run", "build"], {
     ...process.env,
-    NEXT_PUBLIC_STATIC_PREVIEW: "true",
-    NEXT_PUBLIC_GITHUB_PAGES_REPOSITORY:
-      process.env.NEXT_PUBLIC_GITHUB_PAGES_REPOSITORY || "autodrug-website",
-    NEXT_PUBLIC_SITE_URL:
-      process.env.NEXT_PUBLIC_SITE_URL ||
-      "https://rombensonn.github.io/autodrug-website",
-    NEXT_PUBLIC_ENABLE_YANDEX_METRICA: "false",
+    NEXT_OUTPUT: "export",
+    NEXT_PUBLIC_STATIC_PREVIEW: "false",
+    NEXT_PUBLIC_DISABLE_LOCAL_ANALYTICS: "true",
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || "https://auto-drug.online",
     ENABLE_LOCAL_ANALYTICS: "false",
     PRISMA_HIDE_UPDATE_MESSAGE: "1"
   });
+
+  if (!existsSync(phpLeadEndpointPath)) {
+    throw new Error("Static build did not include out/api/lead.php");
+  }
 } finally {
   if (movedApi && existsSync(disabledApiPath)) {
     await rename(disabledApiPath, apiPath);
   }
 }
+
+console.log("REG.RU hosting build is ready in ./out");
+console.log("Before upload, verify LEADS_EMAIL_TO in public/api/lead.php.");
